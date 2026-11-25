@@ -6,6 +6,7 @@ export type ProjectCategory =
 
 export interface ProjectItem {
   id: string;
+  slug: string;
   index: string;
   title: string;
   subtitle: string;
@@ -17,6 +18,7 @@ export interface ProjectItem {
   challenge: string;
   architecture: string;
   impact: string;
+  highlights: string[];
   stack: string[];
   liveUrl?: string;
   repoUrl?: string;
@@ -33,6 +35,7 @@ export interface EssayItem {
   title: string;
   excerpt: string;
   url: string;
+  featured?: boolean;
 }
 
 export interface SocialLink {
@@ -48,7 +51,8 @@ export interface SocialLink {
     | "web"
     | "mail"
     | "whatsapp"
-    | "camera";
+    | "camera"
+    | "calendar";
   group: "social" | "venture" | "direct";
 }
 
@@ -59,6 +63,23 @@ export interface DisciplineItem {
   tools: string[];
 }
 
+export interface EngagementTrack {
+  index: string;
+  audience: string;
+  title: string;
+  description: string;
+  outcomes: string[];
+  ctaLabel: string;
+  contactTrack: "contract" | "role" | "referral";
+}
+
+export interface TestimonialItem {
+  quote: string;
+  author: string;
+  role: string;
+  company: string;
+}
+
 export const PERSON = {
   fullName: "Abdullah Qaasim-Falade",
   shortName: "Abdullah Qaasim",
@@ -66,52 +87,142 @@ export const PERSON = {
   handle: "@Alqaasimee-jr2",
   visualAlias: "Temoojii",
   title: "Creative Technologist, Systems Architect & Founder of NIT7ER",
+  oneLineHook:
+    "Nigerian creative technologist & founder of NIT7ER — engineering custom operational systems, offline-first African EdTech, AI products, and tactile web platforms.",
   location: "Lagos, Nigeria",
   timezone: "Africa/Lagos",
   coordinates: "6.5244° N, 3.3792° E",
   email: "qaasimkids6@gmail.com",
-  phoneDisplay: "+234 901 959 7944",
+  // WhatsApp direct link kept without printing raw phone digits in page copy
   whatsappUrl: "https://wa.me/2349019597944",
-  availability: "Available for select systems architecture, product & studio commissions",
+  bookingUrl: "https://nit7er.vercel.app/book",
+  responseSla: "Replies within 24 hours · Lagos (WAT / GMT+1)",
+  availability:
+    "Open to select systems contracts, AI product builds & founding/senior engineering collaborations",
+  // Drop-in slot: replace with "/images/portrait.webp" once you add a real portrait photo
+  portraitImage: "/images/hero-atelier.webp",
+  portraitAlt:
+    "Architectural studio still life with travertine limestone, anodized aluminum dial, and brushed bronze monolith",
+  portraitCaption: "FIG 01 — ATELIER & SYSTEMS",
   heroHeadlinePrefix: "Designing systems that turn",
   heroHeadlineEmphasis: "chaos into proof.",
   heroBio:
-    "Nigerian creative technologist, software architect, and founder of NIT7ER. I design and ship custom operational infrastructure, offline-first African EdTech, AI-native products, and tactile digital ateliers — alongside photography and technical essays.",
+    "I'm Abdullah Qaasim-Falade — a Lagos-based creative technologist, software architect, and founder of NIT7ER. I design and ship custom operational software, offline-first classroom engines, AI-native products, and high-craft digital ateliers.",
   aboutLead:
-    "I build digital systems from scratch — not pieced together from templates.",
+    "I build digital systems from scratch — engineered for real-world constraints, not slide decks.",
   aboutParagraphs: [
-    "Based in Lagos with deep roots in the Obafemi Awolowo University (Great Ife) builder community, my work sits at the intersection of systems engineering, applied AI, and editorial visual craft.",
-    "Through NIT7ER, I architect internal operational software for growing businesses replacing fragile spreadsheets, while our internal Labs ship standalone products built for real African constraints — from 100% offline classroom smartboard engines to Gemini-powered lesson accountability and cognitive regulation tools.",
-    "Beyond code, I direct NIT7ER Academy to train builders through live production sprints, write honest engineering field notes, and explore light, architecture, and human stories through photography and cinematography under Tempalette.",
+    "Based in Lagos with roots in the Obafemi Awolowo University (Great Ife) builder community, my work lives where systems engineering, applied AI, and visual direction reinforce each other.",
+    "Through NIT7ER, I architect custom operational software for businesses outgrowing fragile spreadsheets — while NIT7ER Labs builds standalone products tested against real African infrastructure realities: 100% offline smartboard engines, Gemini-powered lesson accountability, and calm cognitive tools.",
+    "Outside the terminal, I direct NIT7ER Academy to train builders through simulated production sprints, publish candid engineering field notes, and study light, architecture, and pacing through photography and cinematography under Tempalette.",
   ],
   collaborations: [
     "Custom operational software & internal business infrastructure",
-    "AI-native products, agentic workflows & offline-first mobile apps",
-    "High-craft brand digital ateliers & editorial web platforms",
-    "Open-source developer tools, civic tech & technical writing",
+    "AI-native products, agentic commerce & offline-first mobile apps",
+    "Founding / senior product-engineering & technical advisory roles",
+    "High-craft digital ateliers, open-source tooling & technical writing",
   ],
+};
+
+// Authentic, verifiable proof anchors — zero fabricated metrics
+export const PROOF_STRIP = [
+  {
+    value: "18+",
+    label: "Shipped Products, Labs & Client Systems",
+  },
+  {
+    value: "NIT7ER",
+    label: "Founder · Studio & Talent Academy",
+  },
+  {
+    value: "100%",
+    label: "Offline Smartboard Runtime (Lang Huey)",
+  },
+  {
+    value: "<10s",
+    label: "AST Security & Test CLI (CI-Guardian)",
+  },
+];
+
+// Optional drop-in array: add real client or collaborator quotes here when ready.
+// The UI renders a testimonials band automatically as soon as at least 1 quote is added.
+export const TESTIMONIALS: TestimonialItem[] = [];
+
+export const ENGAGEMENT_TRACKS: EngagementTrack[] = [
+  {
+    index: "01 / CONTRACTS",
+    audience: "For Founders & Operators",
+    title: "Custom Systems & Product Builds",
+    description:
+      "When off-the-shelf SaaS and spreadsheets start slowing your team down, I architect and ship custom internal tools, AI workflows, and high-trust web platforms end to end.",
+    outcomes: [
+      "Operational dashboards, inventory & booking infrastructure",
+      "Production Next.js, TypeScript, Flutter & AI pipelines",
+      "Direct founder-level architecture from audit to launch",
+    ],
+    ctaLabel: "Discuss a System Build",
+    contactTrack: "contract",
+  },
+  {
+    index: "02 / TEAMS & ROLES",
+    audience: "For AI & Product Startups",
+    title: "Product Engineering & Technical Leadership",
+    description:
+      "For ambitious engineering teams building AI-native tools, developer infrastructure, or global web/mobile products who want a builder with both architectural rigor and visual taste.",
+    outcomes: [
+      "Zero-to-one product velocity with production discipline",
+      "Full-stack ownership across UX craft, APIs, and AI systems",
+      "Clear written thinking, documentation, and technical ownership",
+    ],
+    ctaLabel: "Explore a Role or Advisory",
+    contactTrack: "role",
+  },
+  {
+    index: "03 / REFERRALS",
+    audience: "For Peers, Founders & Connectors",
+    title: "Introduce Someone Building Something Serious",
+    description:
+      "Know a school owner, scaling business, or startup team struggling with messy tools or looking for a sharp product engineer? Every warm introduction receives a fast, respectful reply.",
+    outcomes: [
+      "24-hour response guarantee on every warm intro",
+      "Direct shareable case-study URLs for instant context",
+      "Zero hard sales pitches — honest technical clarity first",
+    ],
+    ctaLabel: "Make a Quick Introduction",
+    contactTrack: "referral",
+  },
+];
+
+export const REFERRAL_TEMPLATES = {
+  founder: {
+    label: "For a founder or business owner",
+    text: "You should speak with Abdullah Qaasim-Falade — he's a Lagos-based systems architect and founder of NIT7ER. He builds custom operational software, AI tools, and offline-first products from scratch (no bloated templates). Worth a look at his work: https://nit7er.vercel.app — email: qaasimkids6@gmail.com",
+  },
+  techTeam: {
+    label: "For an AI startup or engineering leader",
+    text: "Introducing Abdullah Qaasim-Falade — a sharp full-stack creative technologist (Next.js 16, TypeScript, Flutter, Gemini/watsonx AI, AST developer tooling) who ships zero-to-one products with strong architectural rigor and design craft. GitHub: https://github.com/Alqaasimee-jr2 — email: qaasimkids6@gmail.com",
+  },
 };
 
 export const CURRENTLY_BUILDING = [
   {
     name: "NIT7ER Infrastructure",
-    note: "Custom ops systems for scaling Lagos firms",
+    note: "Custom ops systems for scaling firms",
     href: "https://nit7er.vercel.app",
   },
   {
     name: "Lang Huey",
-    note: "100% offline French engine for classroom smartboards",
-    href: "#work",
+    note: "100% offline French smartboard engine",
+    href: "/work/lang-huey",
   },
   {
     name: "Flow 7",
-    note: "Reality tracking & cognitive regulation engine",
-    href: "https://flow7-two.vercel.app",
+    note: "Reality tracking & cognitive regulation",
+    href: "/work/flow-7",
   },
   {
     name: "OAUMods",
-    note: "Open-source Great Ife freshman companion PWA",
-    href: "https://oaumods.vercel.app",
+    note: "Open-source Great Ife freshman PWA",
+    href: "/work/oaumods",
   },
 ];
 
@@ -125,7 +236,7 @@ export const VENTURES = [
     location: "Lagos, Nigeria",
     url: "https://nit7er.vercel.app",
     description:
-      "A Lagos-based creative technology studio and infrastructure engineering firm. We replace disconnected spreadsheets and off-the-shelf SaaS bloat with bespoke operations control systems, logistics platforms, booking engines, and automated workflows — while incubating our own standalone ventures in NIT7ER Labs.",
+      "A Lagos-based creative technology studio and infrastructure engineering firm. We replace disconnected spreadsheets and off-the-shelf SaaS bloat with bespoke operations control systems, logistics platforms, booking engines, and automated workflows — while incubating standalone ventures inside NIT7ER Labs.",
     highlights: [
       "Custom Operations & Inventory Architecture",
       "WhatsApp & Business Workflow Automation",
@@ -154,6 +265,7 @@ export const VENTURES = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "lang-huey",
+    slug: "lang-huey",
     index: "01",
     title: "Lang Huey",
     subtitle: "100% Offline Autonomous French Classroom Engine",
@@ -174,11 +286,17 @@ export const PROJECTS: ProjectItem[] = [
       "Engineered a self-contained Dart/Flutter runtime with local speech synthesis assets, deterministic curriculum kinematics aligned to Nigerian NERDC standards, and classroom-scale touch choreography requiring zero internet connection.",
     impact:
       "Born directly to solve a real staffing bottleneck at a Lagos private school — proving that purposeful offline infrastructure unlocks hardware schools already own.",
+    highlights: [
+      "Zero internet dependency — engineered for real Nigerian classroom infrastructure",
+      "Aligned end-to-end with NERDC primary & secondary French curricula",
+      "Operable on 75-inch touchboards by any staff member with zero French fluency",
+    ],
     stack: ["Flutter", "Dart", "Offline Runtime", "NERDC Curriculum", "Smartboard UI"],
     liveUrl: "https://nit7er.vercel.app/blog",
   },
   {
     id: "flow-7",
+    slug: "flow-7",
     index: "02",
     title: "Flow 7",
     subtitle: "Reality Tracking & Cognitive Regulation Engine",
@@ -199,12 +317,18 @@ export const PROJECTS: ProjectItem[] = [
       "Designed a low-friction logging loop paired with calm daily and weekly energy telemetry, stripping away streak anxiety in favor of honest behavioral reflection and clear pattern visualization.",
     impact:
       "Flagship standalone product inside NIT7ER Labs and integrated as an interactive cognitive simulator inside NIT7ER Academy.",
+    highlights: [
+      "Replaces aspirational forecasting with factual daily and weekly reality logs",
+      "Designed around cognitive regulation rather than punitive streak pressure",
+      "Integrated into NIT7ER Academy as a live execution simulator",
+    ],
     stack: ["HTML5", "CSS Architecture", "JavaScript", "Behavioral UX", "Vercel"],
     liveUrl: "https://flow7-two.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Flow7-Landing-Page",
   },
   {
     id: "araxie",
+    slug: "araxie",
     index: "03",
     title: "Araxie",
     subtitle: "Agentic Commerce Marketplace for Student Builders",
@@ -225,12 +349,18 @@ export const PROJECTS: ProjectItem[] = [
       "Built on Next.js 16 App Router and TypeScript 5 with an agentic discovery and bundle-composition layer, verified PayPal Orders v2 server settlement, automated creator payouts, and 14 Vitest integration tests.",
     impact:
       "Shipped live to production for the PayPal AI Hackathon as a full end-to-end blueprint for the campus digital economy.",
+    highlights: [
+      "Agentic multi-item bundling tailored to student courses and workflows",
+      "Verified PayPal Orders v2 checkout and automated P2P creator payout flows",
+      "Backed by 14 passing Vitest integration tests on Next.js 16 + TypeScript 5",
+    ],
     stack: ["Next.js 16", "TypeScript", "PayPal Orders v2", "Agentic AI", "Vitest"],
     liveUrl: "https://araxie.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/araxie",
   },
   {
     id: "oaumods",
+    slug: "oaumods",
     index: "04",
     title: "OAUMods",
     subtitle: "The Great Ife Freshman Companion (Open-Source PWA)",
@@ -251,12 +381,18 @@ export const PROJECTS: ProjectItem[] = [
       "Engineered as an ultra-fast TypeScript progressive web app optimized for low-bandwidth mobile devices, structured data lookup across halls, faculties, and shuttle routes, and community-auditable open-source content.",
     impact:
       "100% non-profit civic infrastructure serving the Obafemi Awolowo University student community in Ile-Ife.",
+    highlights: [
+      "100% non-profit, MIT-licensed civic infrastructure for Great Ife students",
+      "Offline-ready PWA architecture built for mobile campus bandwidth realities",
+      "Replaces 50+ fragmented WhatsApp groups with verified clearance & transit guides",
+    ],
     stack: ["TypeScript", "PWA", "Offline-First", "Mobile Web", "Open Source"],
     liveUrl: "https://oaumods.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/OAUMods",
   },
   {
     id: "clasquera",
+    slug: "clasquera",
     index: "05",
     title: "Clasquera",
     subtitle: "AI Lesson Accountability System for Private Schools",
@@ -273,12 +409,18 @@ export const PROJECTS: ProjectItem[] = [
       "Flutter mobile capture client + Firebase Cloud Functions audio pipeline + Gemini Pro semantic syllabus scoring + Next.js 16 executive dashboard with WhatsApp pilot onboarding.",
     impact:
       "Delivers per-class coverage scores (On Plan / Partial / Off Plan) so administrators intervene early with objective evidence.",
+    highlights: [
+      "End-to-end audio capture, transcription, and Gemini Pro syllabus evaluation",
+      "Real-time On Plan / Partial / Off Plan coverage dashboard for proprietors",
+      "Built across Flutter, Firebase Functions, and Next.js 16",
+    ],
     stack: ["Flutter", "Firebase Functions", "Gemini Pro", "Next.js 16", "TypeScript"],
     liveUrl: "https://clasquera.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Clasquera-Landing-page",
   },
   {
     id: "ci-guardian",
+    slug: "ci-guardian",
     index: "06",
     title: "CI-Guardian",
     subtitle: "Sub-10s Autonomous Pre-Flight Security & Quality Gate",
@@ -288,18 +430,24 @@ export const PROJECTS: ProjectItem[] = [
     role: "Author & Maintainer",
     status: "Open Source · CLI & GitHub Action",
     summary:
-      "Zero-configuration local CLI (`npx ci-guardian`) and GitHub Action chaining syntax-aware AST security scanning (SARIF 2.1.0 compliant), universal test runner auto-discovery, and automated in-place PR documentation in under 10 seconds.",
+      "Zero-configuration local CLI (npx ci-guardian) and GitHub Action chaining syntax-aware AST security scanning (SARIF 2.1.0 compliant), universal test runner auto-discovery, and automated in-place PR documentation in under 10 seconds.",
     challenge:
       "Teams waste CI minutes and miss subtle security regressions because static scanners, test suites, and PR summaries live in slow, disconnected pipelines.",
     architecture:
       "Node.js CLI engine with automatic repository topology detection, AST static analysis outputting SARIF 2.1.0 reports, native test orchestration, and deterministic pre-push verification.",
     impact:
       "Enables solo builders and engineering teams to enforce enterprise pre-flight hygiene with a single command.",
+    highlights: [
+      "Zero-config execution via npx ci-guardian in under 10 seconds",
+      "Syntax-aware AST security scanning outputting SARIF 2.1.0 compliant reports",
+      "Auto-discovers native test commands and generates PR documentation",
+    ],
     stack: ["Node.js", "AST Analysis", "SARIF 2.1.0", "GitHub Actions", "CLI"],
     repoUrl: "https://github.com/Alqaasimee-jr2/CI-Guardian",
   },
   {
     id: "schora-ai",
+    slug: "schora-ai",
     index: "07",
     title: "Schora AI",
     subtitle: "AI School Operations & Teaching Assistant (IBM watsonx)",
@@ -316,11 +464,17 @@ export const PROJECTS: ProjectItem[] = [
       "TypeScript + React + Node.js service orchestrating IBM watsonx.ai foundation models to synthesize classroom signals into actionable weekly briefings.",
     impact:
       "Demonstrated practical enterprise AI adoption tailored to African K-12 operational workflows.",
+    highlights: [
+      "Powered by IBM watsonx.ai foundation models",
+      "Automates weekly leadership briefings and teacher coaching feedback",
+      "Clean full-stack TypeScript, React, and Node.js architecture",
+    ],
     stack: ["TypeScript", "React", "Node.js", "IBM watsonx.ai"],
     repoUrl: "https://github.com/Alqaasimee-jr2/schora-ai-assistant",
   },
   {
     id: "nit7er-platform",
+    slug: "nit7er-platform",
     index: "08",
     title: "NIT7ER Studio Platform",
     subtitle: "Custom Operations Infrastructure Agency & Editorial Hub",
@@ -337,12 +491,18 @@ export const PROJECTS: ProjectItem[] = [
       "Custom editorial interface, structured case-study architecture, interactive booking intake, and long-form engineering publication.",
     impact:
       "Serves as the primary inbound engine for Lagos and international operational software engagements.",
+    highlights: [
+      "Positions operations infrastructure sharply against template web agencies",
+      "Integrates Labs showcase, strategy-call booking, and engineering blog",
+      "Direct editorial voice grounded in Lagos business realities",
+    ],
     stack: ["Next.js", "TypeScript", "Editorial Systems", "Automation"],
     liveUrl: "https://nit7er.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Agency-NIT7ER",
   },
   {
     id: "nit7er-academy",
+    slug: "nit7er-academy",
     index: "09",
     title: "NIT7ER Academy",
     subtitle: "High-Performance Creative Tech & Cognitive Systems Institute",
@@ -359,12 +519,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 16 + React 19 + TypeScript application featuring modular program pages, admissions intake, and interactive lab modules.",
     impact:
       "Establishes the talent pipeline bridging self-driven builders into commercial software delivery.",
+    highlights: [
+      "Program catalog, admissions intake, Studio Labs, and Flow 7 simulator",
+      "Built with Next.js 16, React 19, and TypeScript",
+      "Connects curriculum directly to live studio apprenticeships",
+    ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Admissions Engine"],
     liveUrl: "https://nit7er-academy.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/NIT7ER-ACADEMY",
   },
   {
     id: "royal-grain",
+    slug: "royal-grain",
     index: "10",
     title: "Royal Grain Interiors",
     subtitle: "Luxury Furniture & Interiors Digital Atelier (Ibadan)",
@@ -381,12 +547,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 16 + React 19 + TypeScript with curated showroom collections, craft storytelling pages, and private consultation booking.",
     impact:
       "Transformed brand positioning from local workshop to high-ticket architectural interiors studio.",
+    highlights: [
+      "Tactile digital showroom celebrating African Mahogany, Iroko & Zuma Granite",
+      "Dedicated portfolio, showroom, craft narrative, and consultation routes",
+      "Engineered on Next.js 16 + React 19 for crisp editorial pacing",
+    ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Brand Atelier"],
     liveUrl: "https://royal-grain.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/royal-grain",
   },
   {
     id: "barryham-intl",
+    slug: "barryham-intl",
     index: "11",
     title: "Barryham International",
     subtitle: "Enterprise Sanitary, Plumbing & Electrical Catalogue (Lagos)",
@@ -403,12 +575,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 14 + TypeScript catalogue architecture with brand directories, project credentials, and streamlined quote capture.",
     impact:
       "Digitized commercial specification discovery for 30+ major Nigerian construction projects.",
+    highlights: [
+      "Structured B2B product catalogue and direct Request-a-Quote workflow",
+      "Highlights institutional deployments across CBN, Polaris Bank, and LASU",
+      "Built for fast mobile and desktop procurement verification",
+    ],
     stack: ["Next.js 14", "React 18", "TypeScript", "RFQ System"],
     liveUrl: "https://barryham-intl.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/BARRYHAM-INTL",
   },
   {
     id: "kinetic-logistics",
+    slug: "kinetic-logistics",
     index: "12",
     title: "Kinetic Logistics",
     subtitle: "Supply Chain & Last-Mile Operations Platform (Ikeja, Lagos)",
@@ -425,12 +603,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 15 + TypeScript architectural dark interface with structured service telemetry and dispatch inquiry workflows.",
     impact:
       "Translated complex freight operations into a high-trust enterprise digital interface.",
+    highlights: [
+      "Bespoke architectural dark design system with centralized HSL tokens",
+      "Structured around Ikeja/Lagos last-mile and global freight workflows",
+      "Engineered on Next.js 15, TypeScript, and Framer Motion",
+    ],
     stack: ["Next.js 15", "TypeScript", "Framer Motion", "Logistics UI"],
     liveUrl: "https://last-mile-chi.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/web",
   },
   {
     id: "crestview-health-hub",
+    slug: "crestview-health-hub",
     index: "13",
     title: "Crestview Health Hub",
     subtitle: "Clinical Diagnostic Platform (Agege, Lagos)",
@@ -447,12 +631,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 16 + React 19 + TypeScript with crisp diagnostic service taxonomy and accessible mobile appointment paths.",
     impact:
       "Raised patient trust and mobile booking clarity for a premier Lagos diagnostic center.",
+    highlights: [
+      "Calm, high-trust information hierarchy built for anxious patients",
+      "Clear diagnostic taxonomy and mobile-first booking pathways",
+      "Powered by Next.js 16, React 19, and TypeScript",
+    ],
     stack: ["Next.js 16", "React 19", "TypeScript", "Healthcare UX"],
     liveUrl: "https://crestview-umber.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Health-Hub",
   },
   {
     id: "pure-essence-school",
+    slug: "pure-essence-school",
     index: "14",
     title: "Pure Essence School",
     subtitle: "Digital Sanctuary for Holistic Education (Ogun State)",
@@ -469,12 +659,18 @@ export const PROJECTS: ProjectItem[] = [
       "Next.js 14 + TypeScript + Framer Motion featuring bespoke organic section framing and admissions guidance.",
     impact:
       "Gave parents a warm, credible digital window into the school's mission of purity, piety, and purpose.",
+    highlights: [
+      "Culturally grounded deep maroon and gold visual language",
+      "Smooth responsive motion built with Next.js 14 and Framer Motion",
+      "Clear admissions and community communication architecture",
+    ],
     stack: ["Next.js 14", "TypeScript", "Framer Motion", "Editorial UI"],
     liveUrl: "https://pure-essence-school.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/pure-essence-school",
   },
   {
     id: "zenith-suites-lekki",
+    slug: "zenith-suites-lekki",
     index: "15",
     title: "The Zenith Suites Lekki",
     subtitle: "Luxury Hospitality & WhatsApp Booking Engine",
@@ -491,12 +687,18 @@ export const PROJECTS: ProjectItem[] = [
       "Responsive JavaScript web experience paired with pre-structured WhatsApp lead routing and direct booking incentives.",
     impact:
       "Streamlined high-intent guest inquiries straight into the concierge WhatsApp channel.",
+    highlights: [
+      "Tailored to Lekki luxury expectations: uninterrupted power, Starlink WiFi & discretion",
+      "Automated WhatsApp lead-capture form with direct reservation framing",
+      "Fast mobile-first conversion layout",
+    ],
     stack: ["JavaScript", "WhatsApp Automation", "Hospitality UX", "SEO"],
     liveUrl: "https://housing-tan.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Housing",
   },
   {
     id: "saveur-restaurante",
+    slug: "saveur-restaurante",
     index: "16",
     title: "Saveur (Restaurante)",
     subtitle: "Nigerian Soul · Continental Craft Dining App",
@@ -513,12 +715,18 @@ export const PROJECTS: ProjectItem[] = [
       "React 19 + Vite + React Router 7 + Vanilla CSS with responsive menu filtering and direct WhatsApp checkout formatting.",
     impact:
       "Became a reference storefront architecture for NIT7ER's restaurant systems practice.",
+    highlights: [
+      "Categorized Nigerian & Continental menu with interactive cart state",
+      "Seamless light/dark theme toggle and WhatsApp order dispatch",
+      "Built on React 19, Vite, and Vanilla CSS",
+    ],
     stack: ["React 19", "Vite", "Vanilla CSS", "WhatsApp Ordering"],
     liveUrl: "https://restaurante-rose-gamma.vercel.app",
     repoUrl: "https://github.com/Alqaasimee-jr2/Restaurante",
   },
   {
     id: "tempalette-photography",
+    slug: "tempalette-photography",
     index: "17",
     title: "Tempalette & Temoojii",
     subtitle: "Photography, Cinematography & Visual Storytelling",
@@ -535,12 +743,18 @@ export const PROJECTS: ProjectItem[] = [
       "Curated visual galleries across Tempalette and Pinterest (@Temoojii), complemented by client storytelling builds like G3NERALOLA.",
     impact:
       "Directly informs the restraint, rhythm, and editorial balance across NIT7ER's digital products.",
+    highlights: [
+      "Architectural geometry, portrait framing, and visual color discipline",
+      "Curated public archives on Tempalette and Pinterest (@Temoojii)",
+      "Companion client build: G3NERALOLA monochrome photography portfolio",
+    ],
     stack: ["Photography", "Cinematography", "Art Direction", "Color Grading"],
     liveUrl: "https://temoojii.wixsite.com/tempalette",
     repoUrl: "https://github.com/Alqaasimee-jr2/g3neralola-visual-storytelling",
   },
   {
     id: "self-discipline-guide",
+    slug: "self-discipline-guide",
     index: "18",
     title: "Guide to Self-Discipline & Spirituality",
     subtitle: "Digital Monograph on Focus, Inner Order & Craft",
@@ -557,12 +771,32 @@ export const PROJECTS: ProjectItem[] = [
       "Minimalist typographic web book designed for sustained reading clarity on desktop and mobile.",
     impact:
       "Connects personal philosophy and inner execution with outward technical craft.",
+    highlights: [
+      "Distraction-free editorial reading environment on the web",
+      "Philosophical companion to Flow 7 and NIT7ER Academy",
+      "Built for deliberate, contemplative reading",
+    ],
     stack: ["Next.js", "Python", "Editorial Typography", "Publishing"],
     liveUrl: "https://a-guide-to-self-discipline-and-spir.vercel.app",
     repoUrl:
       "https://github.com/Alqaasimee-jr2/A-Guide-to-Self-Discipline-and-Spirituality.",
   },
 ];
+
+export function getProjectBySlug(slug: string): ProjectItem | undefined {
+  return PROJECTS.find((p) => p.slug === slug);
+}
+
+export function getAdjacentProjects(slug: string): {
+  prev: ProjectItem;
+  next: ProjectItem;
+} {
+  const idx = PROJECTS.findIndex((p) => p.slug === slug);
+  const safeIdx = idx === -1 ? 0 : idx;
+  const prev = PROJECTS[(safeIdx - 1 + PROJECTS.length) % PROJECTS.length];
+  const next = PROJECTS[(safeIdx + 1) % PROJECTS.length];
+  return { prev, next };
+}
 
 export const ESSAYS: EssayItem[] = [
   {
@@ -573,15 +807,18 @@ export const ESSAYS: EssayItem[] = [
     excerpt:
       "Private schools in Lagos spend millions on smartboards, only to watch them sit dark while French timetables collapse. When virtual classes failed my mother's school, I stopped looking for teachers and started writing code.",
     url: "https://nit7er.vercel.app/blog",
+    featured: true,
   },
   {
     id: "essay-flow7-mental-health",
     number: "02",
     category: "Cognitive Systems",
-    title: "Flow 7: Why We're Turning Our Performance Tracker Into a Mental Health Tool",
+    title:
+      "Flow 7: Why We're Turning Our Performance Tracker Into a Mental Health Tool",
     excerpt:
       "Most mental health apps offer breathing bubbles and scented affirmations. Most productivity apps are shame factories. Here is why we pivoted Flow 7 into a factual cognitive regulation engine.",
     url: "https://nit7er.vercel.app/blog",
+    featured: true,
   },
   {
     id: "essay-offline-engineering",
@@ -591,6 +828,7 @@ export const ESSAYS: EssayItem[] = [
     excerpt:
       "If your software needs an internet connection to teach a child to count in French, you haven't built classroom infrastructure — you've built an excuse.",
     url: "https://nit7er.vercel.app/blog",
+    featured: true,
   },
   {
     id: "essay-idle-smartboards",
@@ -716,6 +954,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
     platform: "pinterest",
     group: "social",
   },
+  // Drop-in slot for X / Twitter when ready:
+  // { id: "twitter", label: "X / Twitter", handle: "@yourhandle", url: "https://x.com/yourhandle", platform: "web", group: "social" },
   {
     id: "tempalette",
     label: "Tempalette Photography",
@@ -741,6 +981,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
     group: "venture",
   },
   {
+    id: "booking",
+    label: "Book a 30-Min Strategy Call",
+    handle: "nit7er.vercel.app/book",
+    url: "https://nit7er.vercel.app/book",
+    platform: "calendar",
+    group: "direct",
+  },
+  {
     id: "email",
     label: "Email",
     handle: "qaasimkids6@gmail.com",
@@ -750,8 +998,8 @@ export const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     id: "whatsapp",
-    label: "WhatsApp / Phone",
-    handle: "+234 901 959 7944",
+    label: "WhatsApp",
+    handle: "Direct message",
     url: "https://wa.me/2349019597944",
     platform: "whatsapp",
     group: "direct",

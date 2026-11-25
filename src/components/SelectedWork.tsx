@@ -1,15 +1,10 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
-import { PROJECTS, ProjectItem } from "@/data/portfolio";
+import Link from "next/link";
+import { PROJECTS } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "./Icons";
 
-interface SelectedWorkProps {
-  onSelectProject: (project: ProjectItem) => void;
-}
-
-export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
+export default function SelectedWork() {
   const featured = PROJECTS.filter((p) => p.featured);
 
   return (
@@ -17,7 +12,7 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
       <div className="container">
         <div className="section-header reveal">
           <div>
-            <span className="eyebrow">01 / Selected Case Studies</span>
+            <span className="eyebrow">01 / Selected Proof</span>
             <h2 className="section-title" id="work-heading">
               Flagship <em>Systems</em> &amp; Products
             </h2>
@@ -25,7 +20,7 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
           <p className="section-desc">
             Four representative builds across offline African EdTech, cognitive
             regulation, agentic student commerce, and open-source campus
-            infrastructure. Click any plate for the full architectural breakdown.
+            infrastructure. Each opens as a shareable case study.
           </p>
         </div>
 
@@ -33,7 +28,11 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
           {featured.map((project) => (
             <article key={project.id} className="case-card reveal">
               {project.image && (
-                <div className="case-media">
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="case-media"
+                  aria-label={`Read ${project.title} case study`}
+                >
                   <Image
                     src={project.image}
                     alt={project.imageAlt ?? project.title}
@@ -43,7 +42,7 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
                   <span className="case-index-tag">
                     {project.index} · {project.categoryLabel}
                   </span>
-                </div>
+                </Link>
               )}
 
               <div className="case-body">
@@ -52,7 +51,9 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
                   <span>{project.year}</span>
                 </div>
 
-                <h3 className="case-title">{project.title}</h3>
+                <h3 className="case-title">
+                  <Link href={`/work/${project.slug}`}>{project.title}</Link>
+                </h3>
                 <p className="case-subtitle">{project.subtitle}</p>
                 <p className="case-summary">{project.summary}</p>
 
@@ -65,15 +66,14 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
                 </div>
 
                 <div className="case-actions">
-                  <button
-                    type="button"
+                  <Link
+                    href={`/work/${project.slug}`}
                     id={`open-case-${project.id}`}
                     className="case-read-btn"
-                    onClick={() => onSelectProject(project)}
                   >
                     Read Case Study
                     <ArrowUpRightIcon size={15} />
-                  </button>
+                  </Link>
 
                   <div className="case-ext-links">
                     {project.liveUrl && (
@@ -103,6 +103,13 @@ export default function SelectedWork({ onSelectProject }: SelectedWorkProps) {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="section-footer-link reveal">
+          <Link href="/work" id="view-all-works-btn" className="btn btn-secondary">
+            Explore All {PROJECTS.length} Works in the Archive
+            <ArrowUpRightIcon />
+          </Link>
         </div>
       </div>
     </section>

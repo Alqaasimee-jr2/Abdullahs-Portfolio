@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { PERSON } from "@/data/portfolio";
-import { CloseIcon, MenuIcon, MoonIcon, SunIcon } from "./Icons";
+import { ArrowUpRightIcon, CloseIcon, MenuIcon, MoonIcon, SunIcon } from "./Icons";
 
 interface NavbarProps {
   theme: "light" | "dark";
@@ -10,16 +12,16 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
-  { id: "nav-work", label: "Work", href: "#work" },
-  { id: "nav-archive", label: "Archive", href: "#archive" },
-  { id: "nav-ventures", label: "Ventures", href: "#ventures" },
-  { id: "nav-writing", label: "Writing", href: "#writing" },
-  { id: "nav-about", label: "About", href: "#about" },
-  { id: "nav-contact", label: "Contact", href: "#contact" },
+  { id: "nav-home", label: "Overview", href: "/" },
+  { id: "nav-work", label: "Work", href: "/work" },
+  { id: "nav-about", label: "About", href: "/about" },
+  { id: "nav-writing", label: "Writing", href: "/writing" },
+  { id: "nav-contact", label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
-  const [lagosTime, setLagosTime] = useState<string>("WAT · GMT+1");
+  const pathname = usePathname();
+  const [lagosTime, setLagosTime] = useState<string>("LAGOS · WAT");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -43,10 +45,20 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
     return () => window.clearInterval(timer);
   }, []);
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
     <header className="navbar" id="site-header">
       <div className="container navbar-inner">
-        <a href="#top" className="brand-mark" id="brand-home-link" aria-label="Abdullah Qaasim-Falade home">
+        <Link
+          href="/"
+          className="brand-mark"
+          id="brand-home-link"
+          aria-label="Abdullah Qaasim-Falade home"
+        >
           <span className="monogram-box">{PERSON.monogram}</span>
           <span className="brand-text">
             <span className="brand-name">{PERSON.shortName}</span>
@@ -54,28 +66,48 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
               {lagosTime}
             </span>
           </span>
-        </a>
+        </Link>
 
         <nav aria-label="Primary navigation">
           <ul className="nav-links">
             {NAV_ITEMS.map((item) => (
               <li key={item.id}>
-                <a href={item.href} id={item.id} className="nav-link">
+                <Link
+                  href={item.href}
+                  id={item.id}
+                  className={`nav-link${isActive(item.href) ? " active" : ""}`}
+                >
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
 
         <div className="nav-actions">
+          <Link
+            href="/contact"
+            id="nav-cta-contact"
+            className="btn btn-primary"
+            style={{ padding: "0.52rem 0.95rem", fontSize: "0.82rem" }}
+          >
+            Work With Me
+            <ArrowUpRightIcon size={14} />
+          </Link>
+
           <button
             type="button"
             id="theme-toggle-btn"
             className="theme-toggle"
             onClick={onToggleTheme}
-            aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
-            title={theme === "light" ? "Switch to Obsidian dark mode" : "Switch to Limestone light mode"}
+            aria-label={
+              theme === "light" ? "Switch to dark theme" : "Switch to light theme"
+            }
+            title={
+              theme === "light"
+                ? "Switch to Obsidian dark mode"
+                : "Switch to Limestone light mode"
+            }
           >
             {theme === "light" ? <MoonIcon /> : <SunIcon />}
           </button>
@@ -94,16 +126,22 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
         </div>
       </div>
 
-      <div id="mobile-nav-drawer" className={`mobile-nav-drawer${menuOpen ? " open" : ""}`}>
+      <div
+        id="mobile-nav-drawer"
+        className={`mobile-nav-drawer${menuOpen ? " open" : ""}`}
+      >
         <ul className="mobile-nav-list">
           {NAV_ITEMS.map((item) => (
             <li key={`mobile-${item.id}`}>
-              <a href={item.href} onClick={() => setMenuOpen(false)}>
+              <Link href={item.href} onClick={() => setMenuOpen(false)}>
                 <span>{item.label}</span>
-                <span className="font-mono" style={{ fontSize: "0.75rem", color: "var(--ink-muted)" }}>
-                  ↗
+                <span
+                  className="font-mono"
+                  style={{ fontSize: "0.75rem", color: "var(--ink-muted)" }}
+                >
+                  {isActive(item.href) ? "●" : "↗"}
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

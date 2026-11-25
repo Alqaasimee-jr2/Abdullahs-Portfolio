@@ -1,17 +1,10 @@
 "use client";
 
-import React, { useCallback, useEffect, useState, useSyncExternalStore } from "react";
-import { PERSON, ProjectItem } from "@/data/portfolio";
+import React, { useCallback, useEffect, useSyncExternalStore } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { PERSON } from "@/data/portfolio";
 import Navbar from "./Navbar";
-import Hero from "./Hero";
-import SelectedWork from "./SelectedWork";
-import WorksArchive from "./WorksArchive";
-import VenturesAndCraft from "./VenturesAndCraft";
-import WritingSection from "./WritingSection";
-import VisualStorytelling from "./VisualStorytelling";
-import AboutAndProcess from "./AboutAndProcess";
-import ContactSection from "./ContactSection";
-import ProjectDrawer from "./ProjectDrawer";
 
 function subscribeTheme(onStoreChange: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -34,14 +27,12 @@ function getServerThemeSnapshot(): "light" | "dark" {
   return "light";
 }
 
-export default function PortfolioClient() {
+export default function SiteShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
   const theme = useSyncExternalStore(
     subscribeTheme,
     getThemeSnapshot,
     getServerThemeSnapshot
-  );
-  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
-    null
   );
 
   const handleToggleTheme = useCallback(() => {
@@ -70,48 +61,58 @@ export default function PortfolioClient() {
           }
         });
       },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -24px 0px" }
     );
 
     nodes.forEach((node) => observer.observe(node));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <>
       <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
-
-      <main id="main-content">
-        <Hero />
-        <SelectedWork onSelectProject={setSelectedProject} />
-        <WorksArchive onSelectProject={setSelectedProject} />
-        <VenturesAndCraft />
-        <WritingSection />
-        <VisualStorytelling />
-        <AboutAndProcess />
-        <ContactSection />
-      </main>
-
+      <main id="main-content">{children}</main>
       <footer className="footer" id="site-footer">
         <div className="container footer-inner">
-          <span>
-            © {new Date().getFullYear()} {PERSON.fullName} · Founder of NIT7ER
-          </span>
-          <span className="footer-coords">
-            {PERSON.location}
-            {" // "}
-            {PERSON.coordinates}
-          </span>
-          <a href="#top" id="back-to-top" className="text-link font-mono">
-            Back to top ↑
-          </a>
+          <div>
+            <p style={{ color: "var(--ink)", fontWeight: 500 }}>
+              © {new Date().getFullYear()} {PERSON.fullName} · Founder of NIT7ER
+            </p>
+            <p className="footer-coords" style={{ marginTop: "0.2rem" }}>
+              {PERSON.location}
+              {" // "}
+              {PERSON.coordinates}
+              {" // "}
+              {PERSON.responseSla}
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: "1.15rem",
+            }}
+          >
+            <Link href="/work" className="text-link">
+              Archive
+            </Link>
+            <Link href="/about" className="text-link">
+              About
+            </Link>
+            <Link href="/writing" className="text-link">
+              Writing
+            </Link>
+            <Link href="/contact?track=referral" className="text-link">
+              Refer Abdullah
+            </Link>
+            <Link href="/contact" className="text-link font-mono">
+              Contact ↗
+            </Link>
+          </div>
         </div>
       </footer>
-
-      <ProjectDrawer
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-      />
     </>
   );
 }

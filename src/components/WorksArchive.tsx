@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
-import { PROJECTS, ProjectCategory, ProjectItem } from "@/data/portfolio";
+import Link from "next/link";
+import { PROJECTS, ProjectCategory } from "@/data/portfolio";
 import { ArrowUpRightIcon, SearchIcon } from "./Icons";
-
-interface WorksArchiveProps {
-  onSelectProject: (project: ProjectItem) => void;
-}
 
 type FilterValue = "all" | ProjectCategory;
 
@@ -18,7 +15,7 @@ const FILTERS: { value: FilterValue; label: string }[] = [
   { value: "visual-craft", label: "Visual & Craft" },
 ];
 
-export default function WorksArchive({ onSelectProject }: WorksArchiveProps) {
+export default function WorksArchive() {
   const [activeFilter, setActiveFilter] = useState<FilterValue>("all");
   const [query, setQuery] = useState("");
 
@@ -41,22 +38,12 @@ export default function WorksArchive({ onSelectProject }: WorksArchiveProps) {
   return (
     <section className="section" id="archive" aria-labelledby="archive-heading">
       <div className="container">
-        <div className="section-header reveal">
-          <div>
-            <span className="eyebrow">02 / Complete Index</span>
-            <h2 className="section-title" id="archive-heading">
-              The Full <em>Archive</em> ({PROJECTS.length})
-            </h2>
-          </div>
-          <p className="section-desc">
-            Every public product, client system, AI prototype, developer tool,
-            and creative experiment across GitHub and NIT7ER — searchable and
-            inspectable in one ledger.
-          </p>
-        </div>
-
-        <div className="archive-controls reveal">
-          <div className="filter-tabs" role="tablist" aria-label="Filter projects by discipline">
+        <div className="archive-controls">
+          <div
+            className="filter-tabs"
+            role="tablist"
+            aria-label="Filter projects by discipline"
+          >
             {FILTERS.map((filter) => {
               const count =
                 filter.value === "all"
@@ -92,19 +79,19 @@ export default function WorksArchive({ onSelectProject }: WorksArchiveProps) {
           </div>
         </div>
 
-        <div className="archive-list reveal">
+        <div className="archive-list">
           {filtered.length === 0 ? (
             <div className="archive-empty">
-              No works matched “{query}”. Try clearing your search or switching category.
+              No works matched “{query}”. Try clearing your search or switching
+              category.
             </div>
           ) : (
             filtered.map((project) => (
-              <button
+              <Link
                 key={project.id}
-                type="button"
+                href={`/work/${project.slug}`}
                 id={`archive-row-${project.id}`}
                 className="archive-row"
-                onClick={() => onSelectProject(project)}
               >
                 <span className="archive-num">{project.index}</span>
                 <span className="archive-title-group">
@@ -114,10 +101,10 @@ export default function WorksArchive({ onSelectProject }: WorksArchiveProps) {
                 <span className="archive-summary-col">{project.summary}</span>
                 <span className="archive-cat">{project.categoryLabel}</span>
                 <span className="archive-cta">
-                  Inspect
+                  Case Study
                   <ArrowUpRightIcon size={14} />
                 </span>
-              </button>
+              </Link>
             ))
           )}
         </div>

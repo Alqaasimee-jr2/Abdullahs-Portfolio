@@ -1,27 +1,38 @@
 import React from "react";
+import Link from "next/link";
 import { ESSAYS } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "./Icons";
 
-export default function WritingSection() {
+export default function WritingSection({
+  limit,
+  showSectionHeader = true,
+}: {
+  limit?: number;
+  showSectionHeader?: boolean;
+}) {
+  const items = limit ? ESSAYS.slice(0, limit) : ESSAYS;
+
   return (
     <section className="section" id="writing" aria-labelledby="writing-heading">
       <div className="container">
-        <div className="section-header reveal">
-          <div>
-            <span className="eyebrow">04 / Essays &amp; Field Notes</span>
-            <h2 className="section-title" id="writing-heading">
-              Thinking in <em>Public</em>
-            </h2>
+        {showSectionHeader && (
+          <div className="section-header reveal">
+            <div>
+              <span className="eyebrow">03 / Essays &amp; Field Notes</span>
+              <h2 className="section-title" id="writing-heading">
+                Thinking in <em>Public</em>
+              </h2>
+            </div>
+            <p className="section-desc">
+              Engineering autopsies, classroom observations across Lagos, and
+              honest notes on offline-first software, cognitive tools, and why
+              custom systems beat spreadsheet chaos.
+            </p>
           </div>
-          <p className="section-desc">
-            Engineering autopsies, classroom observations across Lagos, and
-            honest essays on offline-first software, cognitive tools, and why
-            custom systems beat spreadsheet chaos.
-          </p>
-        </div>
+        )}
 
         <div className="essays-list reveal">
-          {ESSAYS.map((essay) => (
+          {items.map((essay) => (
             <a
               key={essay.id}
               id={essay.id}
@@ -43,6 +54,19 @@ export default function WritingSection() {
             </a>
           ))}
         </div>
+
+        {limit && ESSAYS.length > limit && (
+          <div className="section-footer-link reveal">
+            <Link
+              href="/writing"
+              id="view-all-essays-btn"
+              className="btn btn-secondary"
+            >
+              Read All {ESSAYS.length} Field Notes
+              <ArrowUpRightIcon />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

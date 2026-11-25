@@ -5,6 +5,7 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 import { PERSON, SOCIAL_LINKS } from "@/data/portfolio";
+import SiteShell from "@/components/SiteShell";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -30,9 +31,12 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${PERSON.fullName} — Creative Technologist, Systems Architect & Founder of NIT7ER`,
+  title: {
+    default: `${PERSON.fullName} — Creative Technologist, Systems Architect & Founder of NIT7ER`,
+    template: `%s · ${PERSON.fullName}`,
+  },
   description:
-    "Personal portfolio of Abdullah Qaasim-Falade — Nigerian creative technologist, systems architect, founder of NIT7ER & NIT7ER Academy, AI product builder (Flow 7, Lang Huey, Clasquera, Araxie, OAUMods, CI-Guardian), writer, and photographer.",
+    "Personal portfolio of Abdullah Qaasim-Falade — Nigerian creative technologist, systems architect, founder of NIT7ER & NIT7ER Academy, AI product builder (Lang Huey, Flow 7, Clasquera, Araxie, OAUMods, CI-Guardian), writer, and photographer.",
   keywords: [
     "Abdullah Qaasim-Falade",
     "Abdullah Qaasim",
@@ -78,7 +82,7 @@ const jsonLd = {
   name: PERSON.fullName,
   alternateName: [PERSON.shortName, PERSON.visualAlias, "Alqaasimee-jr2"],
   jobTitle: PERSON.title,
-  description: PERSON.heroBio,
+  description: PERSON.oneLineHook,
   email: `mailto:${PERSON.email}`,
   address: {
     "@type": "PostalAddress",
@@ -126,7 +130,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <SiteShell>{children}</SiteShell>
+      </body>
     </html>
   );
 }
