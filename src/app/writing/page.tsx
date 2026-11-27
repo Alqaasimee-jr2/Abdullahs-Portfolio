@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import React from "react";
 import WritingSection from "@/components/WritingSection";
 import LiteraryWorks from "@/components/LiteraryWorks";
-import { ESSAYS, LITERARY_PROFILE, LITERARY_WORKS } from "@/data/portfolio";
+import { ESSAYS, LITERARY_PROFILE, LITERARY_WORKS, PUBLISHED_BOOK } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -13,8 +13,30 @@ export const metadata: Metadata = {
 };
 
 export default function WritingPage() {
+  const bookJsonLd = PUBLISHED_BOOK && {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: PUBLISHED_BOOK.title,
+    datePublished: PUBLISHED_BOOK.year,
+    numberOfPages: 114,
+    url: PUBLISHED_BOOK.url,
+    image: `https://abdullah-qaasim-falade.vercel.app${PUBLISHED_BOOK.cover}`,
+    author: {
+      "@type": "Person",
+      name: "Abdullah Qaasim-Falade",
+      alternateName: LITERARY_PROFILE.penName,
+      url: "https://abdullah-qaasim-falade.vercel.app",
+    },
+  };
+
   return (
     <>
+      {bookJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(bookJsonLd) }}
+        />
+      )}
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">

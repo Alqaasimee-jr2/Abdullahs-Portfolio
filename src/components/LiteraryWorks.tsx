@@ -52,8 +52,8 @@ export default function LiteraryWorks({
                 <Image
                   src={PUBLISHED_BOOK.cover}
                   alt={`${PUBLISHED_BOOK.title} book cover`}
-                  width={360}
-                  height={540}
+                  width={480}
+                  height={766}
                 />
               </div>
             )}

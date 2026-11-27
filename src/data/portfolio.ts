@@ -919,11 +919,18 @@ export const LITERARY_PROFILE = {
 };
 
 /**
- * Published book. Set to an object (title, year, description, url, cover) once
- * the details are confirmed — the /writing page renders the book feature only
- * when this is non-null.
+ * Published book — details taken from the book's own PDF (title page credits
+ * C.R.I, 114 pages, April 2026) and its companion site.
  */
-export const PUBLISHED_BOOK: PublishedBook | null = null;
+export const PUBLISHED_BOOK: PublishedBook | null = {
+  title: "A Guide to Self-Discipline and Spirituality",
+  year: "2026",
+  publisher: "Self-published · 114 pages",
+  description:
+    "An 8-week compass from unfulfilled potential to aligned action — weekly diary reflections for the mind, bodyweight practice for the body, and mindful breathing for the spirit. “Freedom is found in the framework of discipline.”",
+  url: "https://a-guide-to-self-discipline-and-spir.vercel.app",
+  cover: "/images/book-self-discipline-cover.webp",
+};
 
 /** Featured poem lines (verbatim excerpt from "Falter in Our Prayers"). */
 export const FEATURED_POEM = {
