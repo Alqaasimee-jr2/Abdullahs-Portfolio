@@ -12,22 +12,43 @@ import { PERSON } from "@/data/portfolio";
 export default function HomePage() {
   return (
     <>
-      {/* 1. Instant Identity, Positioning & Verifiable Proof Strip */}
+      {/* 1. Gallery Hero + Sculptural Parallax Centerpiece + Verified Proof Strip */}
       <Hero />
 
-      {/* 2. Flagship Case Studies (4 Deep Proofs -> Shareable /work/[slug] Pages) */}
+      {/* 2. Floating Portrait Story Cards (4 Flagship Shareable Case Studies) */}
       <SelectedWork />
 
-      {/* 3. Pure Proof & Outcomes Pathways (Contracts / Global Tech Roles / Referrals) */}
+      {/* 3. Wide-Tracked Luxury Serif Manifesto Interlude (Nick Ruliou) */}
+      <section className="manifesto-band" aria-label="Engineering philosophy">
+        <div className="container reveal">
+          <p className="manifesto-serif">
+            Built from scratch.
+            <br />
+            Not pieced together.
+          </p>
+          <p className="manifesto-sub">
+            NIT7ER · Systems · Offline EdTech · Applied AI · Visual Craft
+          </p>
+          <a
+            href="#ways-to-work"
+            className="manifesto-cue"
+            aria-label="Continue to ways we can work together"
+          >
+            ↓
+          </a>
+        </div>
+      </section>
+
+      {/* 4. Pure Proof & Outcomes Pathways (Contracts / Global Tech Roles / Referrals) */}
       <EngagementTracks />
 
-      {/* 4. Authority Proof — Top 3 Engineering & Labs Field Notes */}
+      {/* 5. Authority Proof — Top 3 Engineering & Labs Field Notes */}
       <WritingSection limit={3} />
 
-      {/* 5. Warmth x Competence — Photography & Cinematography Beyond Code */}
+      {/* 6. Warmth x Competence — Photography & Cinematography Beyond Code */}
       <VisualStorytelling />
 
-      {/* 6. Low-Friction Conversion + 1-Click Referral Engine */}
+      {/* 7. Low-Friction Conversion + 1-Click Referral Engine */}
       <section className="section" aria-labelledby="home-cta-heading">
         <div className="container">
           <div className="home-cta-band reveal">

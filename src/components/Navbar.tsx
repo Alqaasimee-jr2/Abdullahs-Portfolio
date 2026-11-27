@@ -21,27 +21,33 @@ const NAV_ITEMS = [
 
 export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
   const pathname = usePathname();
-  const [lagosTime, setLagosTime] = useState<string>("LAGOS · WAT");
+  const [ambientStamp, setAmbientStamp] = useState<string>("LAGOS · WAT");
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateClock = () => {
       try {
-        const formatted = new Intl.DateTimeFormat("en-GB", {
+        const now = new Date();
+        const dayStr = new Intl.DateTimeFormat("en-GB", {
+          timeZone: PERSON.timezone,
+          weekday: "short",
+          day: "2-digit",
+          month: "short",
+        }).format(now);
+        const timeStr = new Intl.DateTimeFormat("en-GB", {
           timeZone: PERSON.timezone,
           hour: "2-digit",
           minute: "2-digit",
-          second: "2-digit",
           hour12: false,
-        }).format(new Date());
-        setLagosTime(`LAGOS · ${formatted} WAT`);
+        }).format(now);
+        setAmbientStamp(`${dayStr} · LAGOS ${timeStr} WAT`);
       } catch {
-        setLagosTime("LAGOS · GMT+1");
+        setAmbientStamp("LAGOS · GMT+1");
       }
     };
 
     updateClock();
-    const timer = window.setInterval(updateClock, 1000);
+    const timer = window.setInterval(updateClock, 15000);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -63,7 +69,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
           <span className="brand-text">
             <span className="brand-name">{PERSON.shortName}</span>
             <span className="brand-clock" suppressHydrationWarning>
-              {lagosTime}
+              {ambientStamp}
             </span>
           </span>
         </Link>
@@ -89,7 +95,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
             href="/contact"
             id="nav-cta-contact"
             className="btn btn-primary"
-            style={{ padding: "0.52rem 0.95rem", fontSize: "0.82rem" }}
+            style={{ padding: "0.52rem 1rem", fontSize: "0.78rem", letterSpacing: "0.04em" }}
           >
             Work With Me
             <ArrowUpRightIcon size={14} />
@@ -106,7 +112,7 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
             title={
               theme === "light"
                 ? "Switch to Obsidian dark mode"
-                : "Switch to Limestone light mode"
+                : "Switch to Gallery light mode"
             }
           >
             {theme === "light" ? <MoonIcon /> : <SunIcon />}

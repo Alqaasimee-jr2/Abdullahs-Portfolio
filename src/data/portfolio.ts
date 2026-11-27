@@ -100,10 +100,10 @@ export const PERSON = {
   availability:
     "Open to select systems contracts, AI product builds & founding/senior engineering collaborations",
   // Drop-in slot: replace with "/images/portrait.webp" once you add a real portrait photo
-  portraitImage: "/images/hero-atelier.webp",
+  portraitImage: "/images/hero-monolith.webp",
   portraitAlt:
-    "Architectural studio still life with travertine limestone, anodized aluminum dial, and brushed bronze monolith",
-  portraitCaption: "FIG 01 — ATELIER & SYSTEMS",
+    "Museum gallery photograph of a sculpted matte white travertine and raw concrete monolith with a deep forest-green botanical leaf",
+  portraitCaption: "FIG 01 — MONOLITH & FORM",
   heroHeadlinePrefix: "Designing systems that turn",
   heroHeadlineEmphasis: "chaos into proof.",
   heroBio:

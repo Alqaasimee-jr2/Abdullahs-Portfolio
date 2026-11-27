@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useCallback, useEffect, useSyncExternalStore } from "react";
+import React, { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { PERSON } from "@/data/portfolio";
+import { PERSON, SOCIAL_LINKS } from "@/data/portfolio";
 import Navbar from "./Navbar";
+import { PlatformIcon } from "./Icons";
 
 function subscribeTheme(onStoreChange: () => void) {
   if (typeof window === "undefined") return () => {};
@@ -29,10 +30,15 @@ function getServerThemeSnapshot(): "light" | "dark" {
 
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const progressRef = useRef<HTMLDivElement>(null);
   const theme = useSyncExternalStore(
     subscribeTheme,
     getThemeSnapshot,
     getServerThemeSnapshot
+  );
+
+  const railSocials = SOCIAL_LINKS.filter((s) =>
+    ["github", "linkedin", "instagram-personal", "pinterest"].includes(s.id)
   );
 
   const handleToggleTheme = useCallback(() => {
@@ -45,6 +51,34 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Ultra-smooth GPU-composited scroll progress bar
+  useEffect(() => {
+    let rafId = 0;
+    const updateProgress = () => {
+      rafId = 0;
+      const bar = progressRef.current;
+      if (!bar) return;
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      bar.style.transform = `scaleX(${ratio})`;
+    };
+
+    const onScroll = () => {
+      if (!rafId) rafId = window.requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      if (rafId) window.cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [pathname]);
+
+  // Staggered scroll-reveal IntersectionObserver
   useEffect(() => {
     const nodes = document.querySelectorAll<HTMLElement>(".reveal");
     if (!("IntersectionObserver" in window)) {
@@ -56,12 +90,17 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            const el = entry.target as HTMLElement;
+            const staggerIdx = Number(el.dataset.stagger ?? "0");
+            if (staggerIdx > 0) {
+              el.style.transitionDelay = `${staggerIdx * 85}ms`;
+            }
+            el.classList.add("is-visible");
+            observer.unobserve(el);
           }
         });
       },
-      { threshold: 0.06, rootMargin: "0px 0px -24px 0px" }
+      { threshold: 0.06, rootMargin: "0px 0px -28px 0px" }
     );
 
     nodes.forEach((node) => observer.observe(node));
@@ -70,8 +109,34 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <div
+        ref={progressRef}
+        className="scroll-progress-bar"
+        aria-hidden="true"
+      />
+
+      {/* Quiet vertical gallery social rail (Julius Guevarra + Nick Ruliou) */}
+      <aside className="hero-rail-left" aria-label="Quick social links">
+        {railSocials.map((link) => (
+          <a
+            key={link.id}
+            href={link.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={link.label}
+            title={`${link.label} (${link.handle})`}
+          >
+            <PlatformIcon platform={link.platform} size={15} />
+          </a>
+        ))}
+      </aside>
+
       <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
-      <main id="main-content">{children}</main>
+
+      <main id="main-content" key={pathname} className="page-transition">
+        {children}
+      </main>
+
       <footer className="footer" id="site-footer">
         <div className="container footer-inner">
           <div>

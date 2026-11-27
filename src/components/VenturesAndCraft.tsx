@@ -68,8 +68,8 @@ export default function VenturesAndCraft() {
         </div>
 
         <div className="disciplines-grid">
-          {DISCIPLINES.map((item) => (
-            <article key={item.index} className="discipline-card reveal">
+          {DISCIPLINES.map((item, idx) => (
+            <article key={item.index} className="discipline-card reveal" data-stagger={idx % 3}>
               <span className="discipline-num">{item.index}</span>
               <h3 className="discipline-title">{item.title}</h3>
               <p className="discipline-desc">{item.description}</p>

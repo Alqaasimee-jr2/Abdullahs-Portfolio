@@ -26,8 +26,8 @@ export default function EngagementTracks() {
         </div>
 
         <div className="tracks-grid">
-          {ENGAGEMENT_TRACKS.map((track) => (
-            <article key={track.index} className="track-card reveal">
+          {ENGAGEMENT_TRACKS.map((track, idx) => (
+            <article key={track.index} className="track-card reveal" data-stagger={idx}>
               <div>
                 <p className="track-audience">
                   {track.index} · {track.audience}
