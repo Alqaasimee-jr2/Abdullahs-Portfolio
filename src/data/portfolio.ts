@@ -105,11 +105,10 @@ export const PERSON = {
   studioImage: "/images/venture-studio.webp",
   studioAlt:
     "Contemporary Lagos creative technology studio with raw board-formed concrete walls, African mahogany workbench, architectural models, and tropical fiddle-leaf fig in golden-hour light",
-  // Drop-in slot: replace with "/images/portrait.webp" once you add a real portrait photo
-  portraitImage: "/images/hero-monolith.webp",
+  portraitImage: "/images/portrait-abdullah.webp",
   portraitAlt:
-    "Museum gallery photograph of a sculpted matte white travertine and raw concrete monolith with a deep forest-green botanical leaf",
-  portraitCaption: "FIG 01 — MONOLITH & FORM",
+    "Editorial monochrome studio portrait of Abdullah Qaasim-Falade against a warm gallery wall with botanical leaf shadow",
+  portraitCaption: "FIG 01 — ABDULLAH QAASIM-FALADE",
   heroHeadlinePrefix: "Designing systems that turn",
   heroHeadlineEmphasis: "chaos into proof.",
   heroBio:
