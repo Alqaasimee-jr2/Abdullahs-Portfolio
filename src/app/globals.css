@@ -841,12 +841,134 @@ a:hover .icon-arrow {
   line-height: 1.45;
 }
 
-/* ---------- Floating Story Cards (777996904392674189.gif) ---------- */
+/* ---------- Horizontal Floating Project Carousel (777996904392674189.gif) ---------- */
 
-.story-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1.25rem, 2.2vw, 1.85rem);
+.carousel-section {
+  overflow: hidden;
+}
+
+.carousel-top-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.carousel-controls-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel-counter {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+}
+
+.carousel-arrow-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-arrow-btn {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-elevated);
+  color: var(--ink);
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+.carousel-arrow-btn:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--ink-inverse);
+  border-color: var(--ink);
+  transform: translateY(-1px);
+}
+
+.carousel-arrow-btn:disabled {
+  opacity: 0.32;
+  cursor: not-allowed;
+}
+
+.carousel-viewport {
+  position: relative;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: max(var(--gutter), calc((100vw - var(--container-max)) / 2 + var(--gutter)));
+  padding: 1.25rem max(var(--gutter), calc((100vw - var(--container-max)) / 2 + var(--gutter))) 2.75rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.carousel-card {
+  flex: 0 0 clamp(275px, 27vw, 336px);
+  scroll-snap-align: start;
+}
+
+.carousel-bottom-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: 0.25rem;
+}
+
+.carousel-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.carousel-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--border-strong);
+  transition: width 320ms var(--ease-out-expo), background-color 240ms ease;
+}
+
+.carousel-dot:hover {
+  background: var(--ink-muted);
+}
+
+.carousel-dot.active {
+  width: 1.85rem;
+  background: var(--accent);
 }
 
 .story-card {
@@ -907,7 +1029,7 @@ a:hover .icon-arrow {
 
 .story-card-media {
   position: relative;
-  aspect-ratio: 4 / 3.4;
+  aspect-ratio: 4 / 3.85;
   overflow: hidden;
   margin-top: auto;
   background: var(--bg-subtle);
