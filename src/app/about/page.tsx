@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import AboutAndProcess from "@/components/AboutAndProcess";
 import VenturesAndCraft from "@/components/VenturesAndCraft";
 import VisualStorytelling from "@/components/VisualStorytelling";
-import { TESTIMONIALS } from "@/data/portfolio";
+import { PERSON, TESTIMONIALS } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -18,6 +19,23 @@ export default function AboutPage() {
     <>
       <section className="page-hero">
         <div className="container">
+          <div className="author-presence-strip">
+            <Image
+              src={PERSON.avatarImage}
+              alt={PERSON.avatarAlt}
+              width={64}
+              height={64}
+              className="author-presence-avatar"
+              priority
+            />
+            <div>
+              <p className="author-presence-name">{PERSON.fullName}</p>
+              <p className="author-presence-meta">
+                {PERSON.location} · Founder of NIT7ER · Director of NIT7ER Academy
+              </p>
+            </div>
+          </div>
+
           <span className="eyebrow">About · Story, Ventures &amp; Craft</span>
           <h1 className="page-hero-title">
             Competence Built on <em>Real Constraints</em>

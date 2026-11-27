@@ -1,14 +1,23 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PERSON } from "@/data/portfolio";
-import { ArrowUpRightIcon, CloseIcon, MenuIcon, MoonIcon, SunIcon } from "./Icons";
+import {
+  ArrowUpRightIcon,
+  CloseIcon,
+  MenuIcon,
+  MoonIcon,
+  SearchIcon,
+  SunIcon,
+} from "./Icons";
 
 interface NavbarProps {
   theme: "light" | "dark";
   onToggleTheme: () => void;
+  onOpenPalette: () => void;
 }
 
 const NAV_ITEMS = [
@@ -19,7 +28,11 @@ const NAV_ITEMS = [
   { id: "nav-contact", label: "Contact", href: "/contact" },
 ];
 
-export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
+export default function Navbar({
+  theme,
+  onToggleTheme,
+  onOpenPalette,
+}: NavbarProps) {
   const pathname = usePathname();
   const [ambientStamp, setAmbientStamp] = useState<string>("LAGOS · WAT");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -65,7 +78,17 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
           id="brand-home-link"
           aria-label="Abdullah Qaasim-Falade home"
         >
-          <span className="monogram-box">{PERSON.monogram}</span>
+          <span className="avatar-ring">
+            <Image
+              src={PERSON.avatarImage}
+              alt={PERSON.avatarAlt}
+              width={44}
+              height={44}
+              className="avatar-img"
+              priority
+            />
+            <span className="avatar-status-dot" aria-hidden="true" />
+          </span>
           <span className="brand-text">
             <span className="brand-name">{PERSON.shortName}</span>
             <span className="brand-clock" suppressHydrationWarning>
@@ -91,11 +114,27 @@ export default function Navbar({ theme, onToggleTheme }: NavbarProps) {
         </nav>
 
         <div className="nav-actions">
+          <button
+            type="button"
+            id="open-command-palette-btn"
+            className="cmd-trigger-btn"
+            onClick={onOpenPalette}
+            aria-label="Open quick jump search"
+            title="Quick jump (⌘K / Ctrl+K)"
+          >
+            <SearchIcon size={14} />
+            <span className="cmd-kbd">⌘K</span>
+          </button>
+
           <Link
             href="/contact"
             id="nav-cta-contact"
             className="btn btn-primary"
-            style={{ padding: "0.52rem 1rem", fontSize: "0.78rem", letterSpacing: "0.04em" }}
+            style={{
+              padding: "0.52rem 1rem",
+              fontSize: "0.78rem",
+              letterSpacing: "0.04em",
+            }}
           >
             Work With Me
             <ArrowUpRightIcon size={14} />

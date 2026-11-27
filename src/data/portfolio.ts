@@ -99,6 +99,11 @@ export const PERSON = {
   responseSla: "Replies within 24 hours · Lagos (WAT / GMT+1)",
   availability:
     "Open to select systems contracts, AI product builds & founding/senior engineering collaborations",
+  avatarImage: "/images/avatar-aqf.webp",
+  avatarAlt: "Abdullah Qaasim-Falade — Creative Technologist & Founder of NIT7ER",
+  studioImage: "/images/venture-studio.webp",
+  studioAlt:
+    "Contemporary Lagos creative technology studio with raw board-formed concrete walls, African mahogany workbench, architectural models, and tropical fiddle-leaf fig in golden-hour light",
   // Drop-in slot: replace with "/images/portrait.webp" once you add a real portrait photo
   portraitImage: "/images/hero-monolith.webp",
   portraitAlt:
@@ -275,7 +280,7 @@ export const PROJECTS: ProjectItem[] = [
     role: "Creator & Systems Architect",
     status: "NIT7ER Labs · Production",
     featured: true,
-    image: "/images/case-edtech.webp",
+    image: "/images/story-lang-huey.webp",
     imageAlt:
       "Editorial still life of a matte slate tablet, African mahogany geometric blocks, brass pen, and linen notebooks in warm sunlight",
     summary:
@@ -306,7 +311,7 @@ export const PROJECTS: ProjectItem[] = [
     role: "Founder & Product Engineer",
     status: "NIT7ER Labs · Live",
     featured: true,
-    image: "/images/case-systems.webp",
+    image: "/images/story-flow7.webp",
     imageAlt:
       "Minimalist modular dark charcoal slate slabs with precision brushed brass inlays on warm limestone",
     summary:
@@ -401,6 +406,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "AI & Labs",
     role: "Founder & Full-Stack Architect",
     status: "NIT7ER Labs · Live",
+    image: "/images/case-edtech.webp",
+    imageAlt: "Sunlit tablet, African mahogany blocks, and brass pen representing Clasquera lesson accountability",
     summary:
       "Moves private school oversight from hope to proof: a Flutter teacher app records classroom sessions, Firebase Functions transcribe and evaluate lesson coverage via Gemini Pro against the syllabus, and a Next.js admin dashboard surfaces real-time mastery scores.",
     challenge:
@@ -429,6 +436,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Engineering & OSS",
     role: "Author & Maintainer",
     status: "Open Source · CLI & GitHub Action",
+    image: "/images/case-commerce.webp",
+    imageAlt: "Machined charcoal aluminum block, prism, and copper trace representing CI-Guardian AST security gate",
     summary:
       "Zero-configuration local CLI (npx ci-guardian) and GitHub Action chaining syntax-aware AST security scanning (SARIF 2.1.0 compliant), universal test runner auto-discovery, and automated in-place PR documentation in under 10 seconds.",
     challenge:
@@ -456,6 +465,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "AI & Labs",
     role: "AI Systems Developer",
     status: "Prototype · Open Source",
+    image: "/images/case-edtech.webp",
+    imageAlt: "Editorial workspace representing Schora AI school operations assistant powered by IBM watsonx",
     summary:
       "AI-powered school operations platform for African private schools delivering personalized teacher feedback and structured weekly administrative briefings powered by IBM watsonx.ai.",
     challenge:
@@ -483,6 +494,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Founder & Lead Architect",
     status: "Live Production",
+    image: "/images/venture-studio.webp",
+    imageAlt: "Contemporary Lagos creative technology studio interior representing NIT7ER custom infrastructure",
     summary:
       "The digital headquarters, engineering manifesto, strategy-call intake, and technical essay publication for NIT7ER — showcasing internal ops systems, logistics dashboards, and Labs ventures.",
     challenge:
@@ -511,6 +524,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Director & Architect",
     status: "Live Production",
+    image: "/images/venture-studio.webp",
+    imageAlt: "Architectural design studio interior representing NIT7ER Academy production sprints",
     summary:
       "Public admissions platform, curriculum catalog, Studio Labs portal, and interactive Flow 7 simulator for NIT7ER's talent-engineering institute.",
     challenge:
@@ -539,6 +554,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Design Engineer",
     status: "Client Delivery · Live",
+    image: "/images/client-craft.webp",
+    imageAlt: "Handcrafted African mahogany joinery, honed Zuma granite, leather, and brushed bronze hardware",
     summary:
       "Heritage-driven digital showroom and consultation engine for Royal Grain in Mokola, Ibadan — celebrating handcrafted pieces in African Mahogany, Iroko, Zuma Granite, and full-grain leather.",
     challenge:
@@ -567,6 +584,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Full-Stack Developer",
     status: "Client Delivery · Live",
+    image: "/images/case-systems.webp",
+    imageAlt: "Interlocking charcoal slate and precision brass architecture representing Barryham International",
     summary:
       "Corporate platform, structured product catalogue, and RFQ quote engine for a Lagos distributor of Grohe, Geberit, Villeroy & Boch, and Ideal Standard serving clients like CBN, Polaris Bank, and LASU.",
     challenge:
@@ -595,6 +614,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Systems Engineer",
     status: "Live Production",
+    image: "/images/case-systems.webp",
+    imageAlt: "Precision modular slate system representing Kinetic Logistics supply chain operations",
     summary:
       "Enterprise-grade logistics and fleet visibility platform engineered for Ikeja, Lagos supply chain operations — addressing global freight, last-mile routing, and operational precision.",
     challenge:
@@ -623,6 +644,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Frontend Architect",
     status: "Live Production",
+    image: "/images/hero-monolith.webp",
+    imageAlt: "Calm museum gallery travertine and botanical relief representing Crestview Diagnostic Center",
     summary:
       "Clinical precision meets human clarity: digital diagnostic portal engineered for Crestview Diagnostic Center in Agege, giving patients and clinicians calm, high-confidence access to services and scheduling.",
     challenge:
@@ -651,6 +674,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Creative Technologist",
     status: "Live Production",
+    image: "/images/client-craft.webp",
+    imageAlt: "Warm tactile timber and stone craftsmanship representing Pure Essence School",
     summary:
       "Official web platform for Pure Essence School in Ibogun, Ogun State — blending traditional Islamic geometric harmony and maroon-gold warmth with responsive modern web engineering.",
     challenge:
@@ -679,6 +704,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Design & Automation Builder",
     status: "Live Production",
+    image: "/images/client-craft.webp",
+    imageAlt: "Warm luxury architectural materials representing The Zenith Suites Lekki",
     summary:
       "High-exclusivity hospitality experience for Lekki, Lagos featuring black-and-gold editorial framing, bespoke interior visuals, and automated WhatsApp booking capture.",
     challenge:
@@ -707,6 +734,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Frontend Engineer",
     status: "Live Production",
+    image: "/images/hero-atelier.webp",
+    imageAlt: "Warm travertine, anodized dial, and bronze still life representing Saveur dining craft",
     summary:
       "Full-featured dining web application pairing Nigerian & Continental menu curation, live cart management, light/dark modes, and WhatsApp order fulfillment.",
     challenge:
@@ -735,6 +764,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Visual & Craft",
     role: "Photographer & Visual Director",
     status: "Active Practice",
+    image: "/images/visual-lagos.webp",
+    imageAlt: "Silver-gelatin architectural light study representing Tempalette and Temoojii photography",
     summary:
       "My personal visual practice spanning architectural photography, portraits, visual framing, and cinematography — training the eye for light, contrast, and composition that shapes every interface I build.",
     challenge:
@@ -763,6 +794,8 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Visual & Craft",
     role: "Author & Developer",
     status: "Published Web Guide",
+    image: "/images/story-flow7.webp",
+    imageAlt: "Obsidian compass dial, linen journal, and amber glass prism representing Guide to Self-Discipline",
     summary:
       "A calm, contemplative web publication examining personal discipline, intentional habits, and spiritual grounding — complementing the cognitive philosophy behind Flow 7 and NIT7ER Academy.",
     challenge:

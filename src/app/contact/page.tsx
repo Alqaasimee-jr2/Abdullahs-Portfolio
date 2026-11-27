@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import React, { Suspense } from "react";
+import Image from "next/image";
 import ContactSection from "@/components/ContactSection";
 import { PERSON } from "@/data/portfolio";
 
@@ -14,7 +15,22 @@ export default function ContactPage() {
     <>
       <section className="page-hero">
         <div className="container">
-          <span className="eyebrow">Contact · {PERSON.responseSla}</span>
+          <div className="author-presence-strip">
+            <Image
+              src={PERSON.avatarImage}
+              alt={PERSON.avatarAlt}
+              width={64}
+              height={64}
+              className="author-presence-avatar"
+              priority
+            />
+            <div>
+              <p className="author-presence-name">{PERSON.fullName}</p>
+              <p className="author-presence-meta">{PERSON.responseSla}</p>
+            </div>
+          </div>
+
+          <span className="eyebrow">Contact · Direct Founder Access</span>
           <h1 className="page-hero-title">
             Let&apos;s Build <em>Something Real</em>
           </h1>

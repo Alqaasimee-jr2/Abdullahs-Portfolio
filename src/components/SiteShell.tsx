@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useSyncExternalStore } from "react";
+import React, { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PERSON, SOCIAL_LINKS } from "@/data/portfolio";
 import Navbar from "./Navbar";
+import CommandPalette from "./CommandPalette";
 import { PlatformIcon } from "./Icons";
 
 function subscribeTheme(onStoreChange: () => void) {
@@ -31,6 +33,8 @@ function getServerThemeSnapshot(): "light" | "dark" {
 export default function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const progressRef = useRef<HTMLDivElement>(null);
+  const [paletteOpen, setPaletteOpen] = useState(false);
+
   const theme = useSyncExternalStore(
     subscribeTheme,
     getThemeSnapshot,
@@ -51,6 +55,18 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
+  // Global Cmd+K / Ctrl+K shortcut for Command Palette
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setPaletteOpen((v) => !v);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   // Ultra-smooth GPU-composited scroll progress bar
   useEffect(() => {
     let rafId = 0;
@@ -60,7 +76,10 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
       if (!bar) return;
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
-      const ratio = scrollable > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollable)) : 0;
+      const ratio =
+        scrollable > 0
+          ? Math.min(1, Math.max(0, window.scrollY / scrollable))
+          : 0;
       bar.style.transform = `scaleX(${ratio})`;
     };
 
@@ -115,7 +134,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         aria-hidden="true"
       />
 
-      {/* Quiet vertical gallery social rail (Julius Guevarra + Nick Ruliou) */}
+      {/* Quiet vertical gallery social rail */}
       <aside className="hero-rail-left" aria-label="Quick social links">
         {railSocials.map((link) => (
           <a
@@ -131,7 +150,11 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
         ))}
       </aside>
 
-      <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
+      <Navbar
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+        onOpenPalette={() => setPaletteOpen(true)}
+      />
 
       <main id="main-content" key={pathname} className="page-transition">
         {children}
@@ -139,17 +162,26 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
 
       <footer className="footer" id="site-footer">
         <div className="container footer-inner">
-          <div>
-            <p style={{ color: "var(--ink)", fontWeight: 500 }}>
-              © {new Date().getFullYear()} {PERSON.fullName} · Founder of NIT7ER
-            </p>
-            <p className="footer-coords" style={{ marginTop: "0.2rem" }}>
-              {PERSON.location}
-              {" // "}
-              {PERSON.coordinates}
-              {" // "}
-              {PERSON.responseSla}
-            </p>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.9rem" }}>
+            <Image
+              src={PERSON.avatarImage}
+              alt={PERSON.avatarAlt}
+              width={40}
+              height={40}
+              className="footer-avatar"
+            />
+            <div>
+              <p style={{ color: "var(--ink)", fontWeight: 500 }}>
+                © {new Date().getFullYear()} {PERSON.fullName} · Founder of NIT7ER
+              </p>
+              <p className="footer-coords" style={{ marginTop: "0.2rem" }}>
+                {PERSON.location}
+                {" // "}
+                {PERSON.coordinates}
+                {" // "}
+                {PERSON.responseSla}
+              </p>
+            </div>
           </div>
 
           <div
@@ -178,6 +210,12 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
           </div>
         </div>
       </footer>
+
+      <CommandPalette
+        open={paletteOpen}
+        onClose={() => setPaletteOpen(false)}
+        onToggleTheme={handleToggleTheme}
+      />
     </>
   );
 }

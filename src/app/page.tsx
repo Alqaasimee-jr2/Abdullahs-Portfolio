@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import Hero from "@/components/Hero";
 import SelectedWork from "@/components/SelectedWork";
@@ -18,8 +19,8 @@ export default function HomePage() {
       {/* 2. Floating Portrait Story Cards (4 Flagship Shareable Case Studies) */}
       <SelectedWork />
 
-      {/* 3. Wide-Tracked Luxury Serif Manifesto Interlude (Nick Ruliou) */}
-      <section className="manifesto-band" aria-label="Engineering philosophy">
+      {/* 3. Wide-Tracked Luxury Serif Manifesto + Golden-Hour Lagos Studio Frame */}
+      <section className="manifesto-band" aria-label="Engineering philosophy and NIT7ER studio">
         <div className="container reveal">
           <p className="manifesto-serif">
             Built from scratch.
@@ -29,6 +30,23 @@ export default function HomePage() {
           <p className="manifesto-sub">
             NIT7ER · Systems · Offline EdTech · Applied AI · Visual Craft
           </p>
+
+          <figure className="studio-cinema-frame">
+            <Image
+              src={PERSON.studioImage}
+              alt={PERSON.studioAlt}
+              width={1280}
+              height={714}
+            />
+            <figcaption className="studio-cinema-bar">
+              <span>NIT7ER STUDIO · LAGOS, NIGERIA</span>
+              <span>INFRASTRUCTURE · LABS · ACADEMY</span>
+              <Link href="/about" className="studio-cinema-link">
+                Inside the Practice ↗
+              </Link>
+            </figcaption>
+          </figure>
+
           <a
             href="#ways-to-work"
             className="manifesto-cue"

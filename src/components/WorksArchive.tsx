@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS, ProjectCategory } from "@/data/portfolio";
 import { ArrowUpRightIcon, SearchIcon } from "./Icons";
@@ -36,7 +37,7 @@ export default function WorksArchive() {
   }, [activeFilter, query]);
 
   return (
-    <section className="section" id="archive" aria-labelledby="archive-heading">
+    <section className="section" id="archive" aria-label="Filterable works archive">
       <div className="container">
         <div className="archive-controls">
           <div
@@ -91,9 +92,20 @@ export default function WorksArchive() {
                 key={project.id}
                 href={`/work/${project.slug}`}
                 id={`archive-row-${project.id}`}
-                className="archive-row"
+                className="archive-row archive-row-rich"
               >
                 <span className="archive-num">{project.index}</span>
+                <span className="archive-thumb-wrap">
+                  {project.image && (
+                    <Image
+                      src={project.image}
+                      alt=""
+                      width={128}
+                      height={92}
+                      className="archive-thumb"
+                    />
+                  )}
+                </span>
                 <span className="archive-title-group">
                   <span className="archive-title">{project.title}</span>
                   <span className="archive-sub">{project.subtitle}</span>
@@ -101,7 +113,7 @@ export default function WorksArchive() {
                 <span className="archive-summary-col">{project.summary}</span>
                 <span className="archive-cat">{project.categoryLabel}</span>
                 <span className="archive-cta">
-                  Case Study
+                  Inspect
                   <ArrowUpRightIcon size={14} />
                 </span>
               </Link>

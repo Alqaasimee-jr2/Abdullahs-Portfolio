@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PROJECTS } from "@/data/portfolio";
+import { PERSON, PROJECTS } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "./Icons";
 
 export default function SelectedWork() {
@@ -20,11 +20,12 @@ export default function SelectedWork() {
           <p className="section-desc">
             Four representative builds across offline African EdTech, cognitive
             regulation, agentic student commerce, and open-source campus
-            infrastructure. Click any story card to open its shareable case study.
+            infrastructure. Click any story card to inspect its shareable case
+            study.
           </p>
         </div>
 
-        {/* Floating Portrait Gallery Story Cards (inspired by 777996904392674189.gif) */}
+        {/* Floating Portrait Story Cards with Generated Avatar Badges */}
         <div className="story-cards-grid">
           {featured.map((project, idx) => (
             <Link
@@ -35,7 +36,9 @@ export default function SelectedWork() {
               data-stagger={idx}
             >
               <div className="story-card-head">
-                <p className="story-card-kicker">{project.categoryLabel}</p>
+                <p className="story-card-kicker">
+                  {project.index} · {project.categoryLabel}
+                </p>
                 <h3 className="story-card-title">{project.title}</h3>
                 <p className="story-card-sub">{project.subtitle}</p>
               </div>
@@ -45,17 +48,23 @@ export default function SelectedWork() {
                   <Image
                     src={project.image}
                     alt={project.imageAlt ?? project.title}
-                    width={960}
-                    height={720}
+                    width={900}
+                    height={1080}
                   />
-                  <span className="story-card-badge" aria-hidden="true">
-                    {project.index}
+                  {/* Generated Avatar Creator Seal (777996904392674189.gif) */}
+                  <span className="story-avatar-seal" aria-hidden="true">
+                    <Image
+                      src={PERSON.avatarImage}
+                      alt=""
+                      width={40}
+                      height={40}
+                    />
                   </span>
                 </div>
               )}
 
               <div className="story-card-foot">
-                <span>{project.year} · Case Study</span>
+                <span>{project.stack[0]} · {project.year}</span>
                 <ArrowUpRightIcon size={14} />
               </div>
             </Link>
