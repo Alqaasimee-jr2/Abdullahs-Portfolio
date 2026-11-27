@@ -1617,6 +1617,181 @@ a:hover .icon-arrow {
   color: var(--accent);
 }
 
+/* ---------- Literary Work (Poetry & Fiction) ---------- */
+
+.poem-feature {
+  position: relative;
+  margin: 0 0 3.5rem;
+  padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 5vw, 4.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.poem-mark {
+  position: absolute;
+  right: -0.05em;
+  top: 50%;
+  transform: translateY(-52%);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(16rem, 32vw, 26rem);
+  line-height: 1;
+  color: var(--accent-soft);
+  pointer-events: none;
+  user-select: none;
+}
+
+.poem-lines {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin: 0;
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.35rem, 2.6vw, 2.05rem);
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.poem-line:nth-child(6),
+.poem-line:nth-child(7) {
+  margin-top: 0.9rem;
+}
+
+.poem-line:last-child {
+  color: var(--accent);
+}
+
+.poem-caption {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.76rem;
+  color: var(--ink-muted);
+}
+
+.poem-caption .essay-read:hover {
+  color: var(--accent);
+}
+
+.literary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 1rem;
+}
+
+.literary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  transition:
+    border-color var(--transition-fast),
+    transform 320ms var(--ease-out-expo),
+    background-color var(--transition-fast);
+}
+
+.literary-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-elevated);
+  transform: translateY(-3px);
+}
+
+.literary-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.literary-meta .essay-cat {
+  margin-bottom: 0;
+}
+
+.literary-date,
+.literary-tags {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.7rem;
+  color: var(--ink-muted);
+}
+
+.literary-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.literary-excerpt {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+}
+
+.literary-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  color: var(--ink-muted);
+}
+
+.literary-card:hover .literary-foot {
+  color: var(--accent);
+}
+
+.book-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 220px) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-bottom: 3.5rem;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--bg-subtle);
+}
+
+.book-cover img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 24px 50px -20px hsla(150, 10%, 5%, 0.45);
+}
+
+.book-title {
+  font-family: var(--font-serif), Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.8rem;
+}
+
+@media (max-width: 640px) {
+  .book-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .book-cover {
+    max-width: 200px;
+  }
+}
+
 /* ---------- Visual Storytelling Band ---------- */
 
 .visual-band {

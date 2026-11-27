@@ -53,8 +53,28 @@ export interface SocialLink {
     | "mail"
     | "whatsapp"
     | "camera"
-    | "calendar";
+    | "calendar"
+    | "medium";
   group: "social" | "venture" | "direct";
+}
+
+export interface LiteraryWork {
+  id: string;
+  form: "Poem" | "Short Story" | "Micro-Fiction" | "Mythic Monologue" | "Manuscript" | "Journal Fiction";
+  title: string;
+  date: string; // ISO yyyy-mm-dd
+  url: string;
+  excerpt: string;
+  tags: string[];
+}
+
+export interface PublishedBook {
+  title: string;
+  year: string;
+  description: string;
+  url: string;
+  cover?: string;
+  publisher?: string;
 }
 
 export interface DisciplineItem {
@@ -889,6 +909,132 @@ export function getAdjacentProjects(slug: string): {
   return { prev, next };
 }
 
+// ---------- Literary Work (Medium · pen name C.R.I) ----------
+
+export const LITERARY_PROFILE = {
+  penName: "C.R.I",
+  platform: "Medium",
+  platformUrl: "https://medium.com/@qaasimkids6",
+  roles: ["Writer", "Poet", "Published Author"],
+};
+
+/**
+ * Published book. Set to an object (title, year, description, url, cover) once
+ * the details are confirmed — the /writing page renders the book feature only
+ * when this is non-null.
+ */
+export const PUBLISHED_BOOK: PublishedBook | null = null;
+
+/** Featured poem lines (verbatim excerpt from "Falter in Our Prayers"). */
+export const FEATURED_POEM = {
+  title: "Falter in Our Prayers",
+  date: "2025-11-29",
+  url: "https://medium.com/@qaasimkids6/falter-in-our-prayers-72230c3877ff",
+  lines: [
+    "I used to look at prayer",
+    "like an old door I had no reason to open—",
+    "a strange ritual,",
+    "a pause that stole minutes from my grind,",
+    "a rope others clung to when they were drowning.",
+    "But me?",
+    "I thought myself water.",
+    "Fluid. Rising. Unbothered.",
+  ],
+};
+
+export const LITERARY_WORKS: LiteraryWork[] = [
+  {
+    id: "falter-in-our-prayers",
+    form: "Poem",
+    title: "Falter in Our Prayers",
+    date: "2025-11-29",
+    url: "https://medium.com/@qaasimkids6/falter-in-our-prayers-72230c3877ff",
+    excerpt:
+      "I was the boy who prayed as if the sky was listening… But faith doesn’t stay young forever. Life grows teeth. Grief becomes a language.",
+    tags: ["Faith", "Emotion", "Craft"],
+  },
+  {
+    id: "the-gourds-are-not-to-blame",
+    form: "Poem",
+    title: "The gourds are not to blame.",
+    date: "2025-11-24",
+    url: "https://medium.com/@qaasimkids6/the-gourds-are-not-to-blame-9a34f088289a",
+    excerpt:
+      "What spilled was more than drink — it was memory, or prophecy, or lunacy wearing prophecy’s mask.",
+    tags: ["Symbolism", "Realism", "Fantasy"],
+  },
+  {
+    id: "21st-century-heroes",
+    form: "Manuscript",
+    title: "21st Century Heroes.",
+    date: "2025-11-04",
+    url: "https://medium.com/@qaasimkids6/21st-century-heroes-201169930502",
+    excerpt:
+      "Base manuscript. “Today we bring to you the greatest of all time! An unforgiving history of twenty-nine wins and not a single defeat!”",
+    tags: ["Mythology", "Thriller"],
+  },
+  {
+    id: "the-river-of-desire",
+    form: "Short Story",
+    title: "The River of Desire",
+    date: "2025-08-10",
+    url: "https://medium.com/@qaasimkids6/the-river-of-desire-9dbafa557cc3",
+    excerpt:
+      "The Great Arcane uncoiled — one who could grant a wish and still leave the wisher hollow.",
+    tags: ["Mythology", "Arcane", "Prequel"],
+  },
+  {
+    id: "we-thought-itd-be-fun",
+    form: "Short Story",
+    title: "We Thought It’d Be Fun",
+    date: "2025-06-30",
+    url: "https://medium.com/@qaasimkids6/we-thought-itd-be-fun-801610272bdb",
+    excerpt:
+      "Nigeria in the year 3045, zombie warlords and mech suits powered by prayer beads. A twelve-volume epic in biro and lined paper.",
+    tags: ["Apocalypse", "Narrative"],
+  },
+  {
+    id: "no-date-no-time-just-night",
+    form: "Journal Fiction",
+    title: "– [No Date. No Time. Just Night.]",
+    date: "2025-06-15",
+    url: "https://medium.com/@qaasimkids6/no-date-no-time-just-night-1cf7591f35f8",
+    excerpt:
+      "This dream won’t leave me alone. It’s not like the regular ones. This one feels real. Like it knows me.",
+    tags: ["Psychological Thriller", "Alter Ego"],
+  },
+  {
+    id: "the-storms-quest",
+    form: "Mythic Monologue",
+    title: "The Storm’s Quest",
+    date: "2025-06-01",
+    url: "https://medium.com/@qaasimkids6/the-storms-quest-71edde7c7cac",
+    excerpt:
+      "I — the bringer of storms, child of thunder, herald of the dawn — was once an insignificant being, no grander than the dust motes that dance in sunlight.",
+    tags: ["Myths & Legends", "Tragic Hero"],
+  },
+  {
+    id: "an-apocalyptic-story",
+    form: "Short Story",
+    title: "An Apocalyptic Story",
+    date: "2025-05-25",
+    url: "https://medium.com/@qaasimkids6/an-apocalyptic-story-5ff5b50bc4f5",
+    excerpt:
+      "This conflict has crossed into something deeper — something spiritual. And it has exposed a harsh truth: humanity is not as powerful as we believed.",
+    tags: ["Apocalypse", "Mythical Creatures"],
+  },
+  {
+    id: "menace-in-the-bloodline",
+    form: "Micro-Fiction",
+    title: "Menace in the Bloodline….",
+    date: "2025-05-18",
+    url: "https://medium.com/@qaasimkids6/menace-in-the-bloodline-5ab53201077b",
+    excerpt:
+      "Troy wasn’t having a great day, and neither were the men who’d chosen the wrong Friday night to rob him.",
+    tags: ["Action", "Urban Legend"],
+  },
+];
+
 export const ESSAYS: EssayItem[] = [
   {
     id: "essay-lang-huey-origin",
@@ -1043,6 +1189,14 @@ export const SOCIAL_LINKS: SocialLink[] = [
     handle: "@Temoojii",
     url: "https://www.pinterest.com/Temoojii/",
     platform: "pinterest",
+    group: "social",
+  },
+  {
+    id: "medium",
+    label: "Medium",
+    handle: "@qaasimkids6 · C.R.I",
+    url: "https://medium.com/@qaasimkids6",
+    platform: "medium",
     group: "social",
   },
   // Drop-in slot for X / Twitter when ready:

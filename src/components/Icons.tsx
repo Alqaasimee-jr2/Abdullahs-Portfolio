@@ -182,10 +182,19 @@ export function PlatformIcon({
     | "mail"
     | "whatsapp"
     | "camera"
-    | "calendar";
+    | "calendar"
+    | "medium";
   size?: number;
 }) {
   switch (platform) {
+    case "medium":
+      return (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <ellipse cx="7" cy="12" rx="5.5" ry="5.8" />
+          <ellipse cx="16.2" cy="12" rx="2.7" ry="5.4" />
+          <ellipse cx="21.2" cy="12" rx="1" ry="4.9" />
+        </svg>
+      );
     case "github":
       return (
         <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

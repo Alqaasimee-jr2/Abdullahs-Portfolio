@@ -42,7 +42,7 @@ export default function SiteShell({ children }: { children: React.ReactNode }) {
   );
 
   const railSocials = SOCIAL_LINKS.filter((s) =>
-    ["github", "linkedin", "instagram-personal", "pinterest"].includes(s.id)
+    ["github", "linkedin", "instagram-personal", "medium", "pinterest"].includes(s.id)
   );
 
   const handleToggleTheme = useCallback(() => {

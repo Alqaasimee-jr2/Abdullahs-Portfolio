@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import SelectedWork from "@/components/SelectedWork";
 import EngagementTracks from "@/components/EngagementTracks";
 import WritingSection from "@/components/WritingSection";
+import LiteraryWorks from "@/components/LiteraryWorks";
 import VisualStorytelling from "@/components/VisualStorytelling";
 import ReferralCard from "@/components/ReferralCard";
 import { ArrowUpRightIcon } from "@/components/Icons";
@@ -62,6 +63,9 @@ export default function HomePage() {
 
       {/* 5. Authority Proof — Top 3 Engineering & Labs Field Notes */}
       <WritingSection limit={3} />
+
+      {/* 5b. Writer & Poet — Featured poem + latest literary works (C.R.I on Medium) */}
+      <LiteraryWorks limit={3} />
 
       {/* 6. Warmth x Competence — Photography & Cinematography Beyond Code */}
       <VisualStorytelling />

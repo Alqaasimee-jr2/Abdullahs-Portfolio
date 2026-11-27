@@ -85,9 +85,14 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: PERSON.fullName,
-  alternateName: [PERSON.shortName, PERSON.visualAlias, "Alqaasimee-jr2"],
+  alternateName: [PERSON.shortName, PERSON.visualAlias, "Alqaasimee-jr2", "C.R.I"],
   url: "https://abdullah-qaasim-falade.vercel.app",
   jobTitle: PERSON.title,
+  hasOccupation: [
+    { "@type": "Occupation", name: "Creative Technologist" },
+    { "@type": "Occupation", name: "Writer" },
+    { "@type": "Occupation", name: "Poet" },
+  ],
   description: PERSON.oneLineHook,
   email: `mailto:${PERSON.email}`,
   address: {
