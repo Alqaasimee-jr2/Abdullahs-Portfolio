@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import AboutHero from "@/components/AboutHero";
 import AboutAndProcess from "@/components/AboutAndProcess";
 import VenturesAndCraft from "@/components/VenturesAndCraft";
 import VisualStorytelling from "@/components/VisualStorytelling";
-import { PERSON, TESTIMONIALS } from "@/data/portfolio";
+import { TESTIMONIALS } from "@/data/portfolio";
 import { ArrowUpRightIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -17,37 +17,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="page-hero">
-        <div className="container">
-          <div className="author-presence-strip">
-            <Image
-              src={PERSON.avatarImage}
-              alt={PERSON.avatarAlt}
-              width={64}
-              height={64}
-              className="author-presence-avatar"
-              priority
-            />
-            <div>
-              <p className="author-presence-name">{PERSON.fullName}</p>
-              <p className="author-presence-meta">
-                {PERSON.location} · Founder of NIT7ER · Director of NIT7ER Academy
-              </p>
-            </div>
-          </div>
-
-          <span className="eyebrow">About · Story, Ventures &amp; Craft</span>
-          <h1 className="page-hero-title">
-            Competence Built on <em>Real Constraints</em>
-          </h1>
-          <p className="page-hero-lead">
-            Lagos creative technologist, Great Ife builder, founder of NIT7ER,
-            and photographer under Tempalette. Everything I ship starts by
-            respecting how people actually work in the real world.
-          </p>
-        </div>
-      </section>
-
+      <AboutHero />
       <AboutAndProcess />
       <VenturesAndCraft />
       <VisualStorytelling />
@@ -67,7 +37,10 @@ export default function AboutPage() {
               {TESTIMONIALS.map((item) => (
                 <blockquote key={item.author} className="venture-card">
                   <p className="venture-desc">“{item.quote}”</p>
-                  <footer className="font-mono" style={{ fontSize: "0.78rem", color: "var(--ink-muted)" }}>
+                  <footer
+                    className="font-mono"
+                    style={{ fontSize: "0.78rem", color: "var(--ink-muted)" }}
+                  >
                     {item.author} — {item.role}, {item.company}
                   </footer>
                 </blockquote>
@@ -78,10 +51,26 @@ export default function AboutPage() {
       )}
 
       <section className="section">
-        <div className="container" style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "1.25rem" }}>
+        <div
+          className="container"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1.25rem",
+          }}
+        >
           <div>
             <p className="eyebrow">Ready to collaborate?</p>
-            <h2 className="font-serif" style={{ fontSize: "clamp(1.85rem, 3.5vw, 2.75rem)", fontWeight: 400, marginTop: "0.45rem" }}>
+            <h2
+              className="font-serif"
+              style={{
+                fontSize: "clamp(1.85rem, 3.5vw, 2.75rem)",
+                fontWeight: 400,
+                marginTop: "0.45rem",
+              }}
+            >
               Let&apos;s turn a real problem into shipped software.
             </h2>
           </div>
