@@ -200,11 +200,11 @@ export const ENGAGEMENT_TRACKS: EngagementTrack[] = [
 export const REFERRAL_TEMPLATES = {
   founder: {
     label: "For a founder or business owner",
-    text: "You should speak with Abdullah Qaasim-Falade — he's a Lagos-based systems architect and founder of NIT7ER. He builds custom operational software, AI tools, and offline-first products from scratch (no bloated templates). Worth a look at his work: https://nit7er.vercel.app — email: qaasimkids6@gmail.com",
+    text: "You should speak with Abdullah Qaasim-Falade — he's a Lagos-based systems architect and founder of NIT7ER. He builds custom operational software, AI tools, and offline-first products from scratch (no bloated templates). Portfolio: https://abdullah-qaasim-falade.vercel.app — email: qaasimkids6@gmail.com",
   },
   techTeam: {
     label: "For an AI startup or engineering leader",
-    text: "Introducing Abdullah Qaasim-Falade — a sharp full-stack creative technologist (Next.js 16, TypeScript, Flutter, Gemini/watsonx AI, AST developer tooling) who ships zero-to-one products with strong architectural rigor and design craft. GitHub: https://github.com/Alqaasimee-jr2 — email: qaasimkids6@gmail.com",
+    text: "Introducing Abdullah Qaasim-Falade — a sharp full-stack creative technologist (Next.js 16, TypeScript, Flutter, Gemini/watsonx AI, AST developer tooling) who ships zero-to-one products with strong architectural rigor and design craft. Portfolio: https://abdullah-qaasim-falade.vercel.app · GitHub: https://github.com/Alqaasimee-jr2",
   },
 };
 
@@ -280,9 +280,23 @@ export const PROJECTS: ProjectItem[] = [
     role: "Creator & Systems Architect",
     status: "NIT7ER Labs · Production",
     featured: true,
-    image: "/images/story-lang-huey.webp",
+    image: "/images/works/lang-huey-terms.webp",
     imageAlt:
-      "Editorial still life of a matte slate tablet, African mahogany geometric blocks, brass pen, and linen notebooks in warm sunlight",
+      "Lang Huey offline French smartboard app showing Select Academic Term across First, Second, and Third Term (39 NERDC lessons)",
+    gallery: [
+      {
+        src: "/images/works/lang-huey-terms.webp",
+        caption: "Lang Huey Smartboard Hub — First, Second & Third Term NERDC Curriculum",
+      },
+      {
+        src: "/images/works/lang-huey-studio.webp",
+        caption: "Classroom Commands Studio — Interactive Gestures, Phonetics & Offline Audio",
+      },
+      {
+        src: "/images/works/lang-huey-recall.webp",
+        caption: "Quick Recall Flashcards — 0.8x Classroom Speech Speed & Tap-to-Reveal Prompts",
+      },
+    ],
     summary:
       "An autonomous, zero-connectivity French teaching engine built in Dart/Flutter for Nigerian classroom smartboards. Transforms idle 75-inch touchscreens into complete NERDC-aligned lessons operable by any staff member with zero French knowledge.",
     challenge:

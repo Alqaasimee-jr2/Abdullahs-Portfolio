@@ -34,7 +34,7 @@ const PORTALS: CraftPortal[] = [
     index: "01",
     label: "AI & NIT7ER Labs",
     caption: "Lang Huey · Flow 7 · Clasquera · Schora AI",
-    image: "/images/story-lang-huey.webp",
+    image: "/images/works/lang-huey-terms.webp",
     kind: "Works",
   },
   {

@@ -31,12 +31,16 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://abdullah-qaasim-falade.vercel.app"),
   title: {
     default: `${PERSON.fullName} — Creative Technologist, Systems Architect & Founder of NIT7ER`,
     template: `%s · ${PERSON.fullName}`,
   },
   description:
     "Personal portfolio of Abdullah Qaasim-Falade — Nigerian creative technologist, systems architect, founder of NIT7ER & NIT7ER Academy, AI product builder (Lang Huey, Flow 7, Clasquera, Araxie, OAUMods, CI-Guardian), writer, and photographer.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Abdullah Qaasim-Falade",
     "Abdullah Qaasim",
@@ -52,27 +56,37 @@ export const metadata: Metadata = {
     "CI-Guardian",
     "Tempalette",
   ],
-  authors: [{ name: PERSON.fullName, url: "https://github.com/Alqaasimee-jr2" }],
+  authors: [{ name: PERSON.fullName, url: "https://abdullah-qaasim-falade.vercel.app" }],
   openGraph: {
     title: `${PERSON.fullName} — Creative Technologist & Founder of NIT7ER`,
     description:
       "Designing custom operational infrastructure, offline-first African EdTech, AI products, and tactile digital ateliers from Lagos, Nigeria.",
+    url: "https://abdullah-qaasim-falade.vercel.app",
     type: "website",
     locale: "en_NG",
     siteName: PERSON.fullName,
+    images: [
+      {
+        url: "/images/works/lang-huey-terms.webp",
+        width: 1280,
+        height: 800,
+        alt: "Abdullah Qaasim-Falade — Creative Technologist & Systems Architect",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${PERSON.fullName} — Creative Technologist & Founder of NIT7ER`,
     description:
       "Systems architecture, NIT7ER Labs, open-source engineering, essays, and photography.",
+    images: ["/images/works/lang-huey-terms.webp"],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f1ea" },
-    { media: "(prefers-color-scheme: dark)", color: "#11100e" },
+    { media: "(prefers-color-scheme: light)", color: "#f9f8f6" },
+    { media: "(prefers-color-scheme: dark)", color: "#0f1110" },
   ],
 };
 
@@ -81,6 +95,7 @@ const jsonLd = {
   "@type": "Person",
   name: PERSON.fullName,
   alternateName: [PERSON.shortName, PERSON.visualAlias, "Alqaasimee-jr2"],
+  url: "https://abdullah-qaasim-falade.vercel.app",
   jobTitle: PERSON.title,
   description: PERSON.oneLineHook,
   email: `mailto:${PERSON.email}`,

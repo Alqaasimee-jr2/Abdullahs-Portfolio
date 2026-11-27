@@ -27,10 +27,17 @@ export async function generateMetadata({
   return {
     title: `${project.title} — ${project.subtitle}`,
     description: project.summary,
+    alternates: {
+      canonical: `/work/${project.slug}`,
+    },
     openGraph: {
       title: `${project.title} — Case Study · Abdullah Qaasim-Falade`,
       description: project.summary,
+      url: `https://abdullah-qaasim-falade.vercel.app/work/${project.slug}`,
       type: "article",
+      images: project.image
+        ? [{ url: project.image, alt: project.imageAlt ?? project.title }]
+        : undefined,
     },
   };
 }
