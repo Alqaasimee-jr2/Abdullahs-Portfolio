@@ -65,21 +65,12 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_NG",
     siteName: PERSON.fullName,
-    images: [
-      {
-        url: "/images/works/lang-huey-terms.webp",
-        width: 1280,
-        height: 800,
-        alt: "Abdullah Qaasim-Falade — Creative Technologist & Systems Architect",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${PERSON.fullName} — Creative Technologist & Founder of NIT7ER`,
     description:
       "Systems architecture, NIT7ER Labs, open-source engineering, essays, and photography.",
-    images: ["/images/works/lang-huey-terms.webp"],
   },
 };
 
