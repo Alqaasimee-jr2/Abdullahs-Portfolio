@@ -116,6 +116,25 @@ export default async function CaseStudyPage({
               <h2>04 / Outcome &amp; Proof</h2>
               <p>{project.impact}</p>
             </section>
+
+            {project.gallery && project.gallery.length > 0 && (
+              <section className="case-detail-section">
+                <h2>05 / Real Product &amp; Visual Gallery</h2>
+                <div className="case-gallery-grid">
+                  {project.gallery.map((shot) => (
+                    <figure key={shot.src} className="case-gallery-item">
+                      <Image
+                        src={shot.src}
+                        alt={shot.caption}
+                        width={960}
+                        height={640}
+                      />
+                      <figcaption>{shot.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
 
           <aside className="case-sidebar-card" aria-label="Case study metadata and actions">

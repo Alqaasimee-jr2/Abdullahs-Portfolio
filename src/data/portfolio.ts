@@ -25,6 +25,7 @@ export interface ProjectItem {
   featured?: boolean;
   image?: string;
   imageAlt?: string;
+  gallery?: { src: string; caption: string }[];
   status: string;
 }
 
@@ -311,9 +312,12 @@ export const PROJECTS: ProjectItem[] = [
     role: "Founder & Product Engineer",
     status: "NIT7ER Labs · Live",
     featured: true,
-    image: "/images/story-flow7.webp",
-    imageAlt:
-      "Minimalist modular dark charcoal slate slabs with precision brushed brass inlays on warm limestone",
+    image: "/images/works/flow7-dash.webp",
+    imageAlt: "Flow 7 live mobile interface showing daily tracked time, weekly focus chart, and session log",
+    gallery: [
+      { src: "/images/works/flow7-dash.webp", caption: "Flow 7 Mobile Dashboard — Daily & Weekly Reality Awareness" },
+      { src: "/images/works/flow7.webp", caption: "Flow 7 Onboarding — See Where Your Time Goes" },
+    ],
     summary:
       "A mobile-first reality tracking and cognitive regulation engine for young to mid-life adults. Replaces aspirational to-do guilt with factual logging of energy, focus, and daily actions across core life areas.",
     challenge:
@@ -343,9 +347,13 @@ export const PROJECTS: ProjectItem[] = [
     role: "Lead Full-Stack Engineer",
     status: "PayPal AI Hackathon · Live",
     featured: true,
-    image: "/images/case-commerce.webp",
-    imageAlt:
-      "Machined charcoal aluminum block, smoked glass prism, and copper circuit trace plate on travertine stone",
+    image: "/images/works/araxie.webp",
+    imageAlt: "Araxie production landing hero — Where university builders trade peer software",
+    gallery: [
+      { src: "/images/works/araxie.webp", caption: "Araxie Production Landing — Student Digital Economy" },
+      { src: "/images/works/araxie-market.webp", caption: "Campus Software Marketplace Storefront" },
+      { src: "/images/works/araxie-paypal.webp", caption: "Agentic Commerce & PayPal Orders v2 Checkout" },
+    ],
     summary:
       "“Whop for Students” — an AI-driven digital marketplace where campus developers publish micro-software, Chrome extensions, and study workspaces with intelligent multi-item bundling, PayPal Orders v2 checkout, and automated peer-to-peer payouts.",
     challenge:
@@ -375,9 +383,12 @@ export const PROJECTS: ProjectItem[] = [
     role: "Creator & Maintainer",
     status: "Open Source · MIT · Live",
     featured: true,
-    image: "/images/visual-lagos.webp",
-    imageAlt:
-      "Fine-art monochrome architectural photograph of sunlight slicing through modernist West African concrete colonnades",
+    image: "/images/works/oaumods.webp",
+    imageAlt: "OAUMods — Great Ife Freshman Companion & Campus Hub banner",
+    gallery: [
+      { src: "/images/works/oaumods.webp", caption: "OAUMods — Great Ife Freshman Companion & Campus Hub" },
+      { src: "/images/works/oaumods-map.webp", caption: "Interactive OAU Campus Satellite Map & Landmarks" },
+    ],
     summary:
       "An open-source, mobile-first, offline-ready campus survival guide and navigation hub built for incoming Obafemi Awolowo University (Great Ife) freshmen — unifying landmarks, bed-space balloting, clearance checklists, transit fares, and verified academic guides.",
     challenge:
@@ -465,8 +476,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "AI & Labs",
     role: "AI Systems Developer",
     status: "Prototype · Open Source",
-    image: "/images/case-edtech.webp",
-    imageAlt: "Editorial workspace representing Schora AI school operations assistant powered by IBM watsonx",
+    image: "/images/works/schora.webp",
+    imageAlt: "Schora AI Teaching Assistant powered by IBM watsonx.ai",
+    gallery: [
+      { src: "/images/works/schora.webp", caption: "IBM watsonx.ai Prompt & Briefing Architecture" },
+      { src: "/images/works/schora-2.webp", caption: "Schora AI Full-Stack System Implementation" },
+    ],
     summary:
       "AI-powered school operations platform for African private schools delivering personalized teacher feedback and structured weekly administrative briefings powered by IBM watsonx.ai.",
     challenge:
@@ -494,8 +509,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Founder & Lead Architect",
     status: "Live Production",
-    image: "/images/venture-studio.webp",
-    imageAlt: "Contemporary Lagos creative technology studio interior representing NIT7ER custom infrastructure",
+    image: "/images/works/nit7er-studio.webp",
+    imageAlt: "NIT7ER Studio visual identity backdrop",
+    gallery: [
+      { src: "/images/works/nit7er-studio.webp", caption: "NIT7ER Visual Identity & Brand Atmosphere" },
+      { src: "/images/works/nit7er-academy.webp", caption: "NIT7ER Gold Emblem Header System" },
+    ],
     summary:
       "The digital headquarters, engineering manifesto, strategy-call intake, and technical essay publication for NIT7ER — showcasing internal ops systems, logistics dashboards, and Labs ventures.",
     challenge:
@@ -524,8 +543,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Director & Architect",
     status: "Live Production",
-    image: "/images/venture-studio.webp",
-    imageAlt: "Architectural design studio interior representing NIT7ER Academy production sprints",
+    image: "/images/works/nit7er-academy.webp",
+    imageAlt: "NIT7ER Academy official gold emblem header",
+    gallery: [
+      { src: "/images/works/nit7er-academy.webp", caption: "NIT7ER Academy Official Emblem Header" },
+      { src: "/images/venture-studio.webp", caption: "Simulated Production Studio Environment" },
+    ],
     summary:
       "Public admissions platform, curriculum catalog, Studio Labs portal, and interactive Flow 7 simulator for NIT7ER's talent-engineering institute.",
     challenge:
@@ -554,8 +577,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Design Engineer",
     status: "Client Delivery · Live",
-    image: "/images/client-craft.webp",
-    imageAlt: "Handcrafted African mahogany joinery, honed Zuma granite, leather, and brushed bronze hardware",
+    image: "/images/works/royal-grain.webp",
+    imageAlt: "Royal Grain Interiors luxury living space crafted in African Mahogany",
+    gallery: [
+      { src: "/images/works/royal-grain.webp", caption: "Royal Grain — Contemporary West African Living Space" },
+      { src: "/images/works/royal-grain-craft.webp", caption: "Master Woodworker Hand-Planing Mahogany Joinery" },
+    ],
     summary:
       "Heritage-driven digital showroom and consultation engine for Royal Grain in Mokola, Ibadan — celebrating handcrafted pieces in African Mahogany, Iroko, Zuma Granite, and full-grain leather.",
     challenge:
@@ -584,8 +611,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Full-Stack Developer",
     status: "Client Delivery · Live",
-    image: "/images/case-systems.webp",
-    imageAlt: "Interlocking charcoal slate and precision brass architecture representing Barryham International",
+    image: "/images/works/barryham.webp",
+    imageAlt: "Barryham International luxury sanitary ware and architectural fittings",
+    gallery: [
+      { src: "/images/works/barryham.webp", caption: "Barryham International — European Sanitary & Plumbing Showcase" },
+      { src: "/images/works/barryham-foyer.webp", caption: "Commercial Architectural Interior Specification" },
+    ],
     summary:
       "Corporate platform, structured product catalogue, and RFQ quote engine for a Lagos distributor of Grohe, Geberit, Villeroy & Boch, and Ideal Standard serving clients like CBN, Polaris Bank, and LASU.",
     challenge:
@@ -674,8 +705,11 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Creative Technologist",
     status: "Live Production",
-    image: "/images/client-craft.webp",
-    imageAlt: "Warm tactile timber and stone craftsmanship representing Pure Essence School",
+    image: "/images/works/pure-essence.webp",
+    imageAlt: "Pure Essence School illuminated maroon and gold Arabic calligraphy banner",
+    gallery: [
+      { src: "/images/works/pure-essence.webp", caption: "Pure Essence School — Maroon & Gold Heritage Identity" },
+    ],
     summary:
       "Official web platform for Pure Essence School in Ibogun, Ogun State — blending traditional Islamic geometric harmony and maroon-gold warmth with responsive modern web engineering.",
     challenge:
@@ -704,8 +738,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Client Systems",
     role: "Design & Automation Builder",
     status: "Live Production",
-    image: "/images/client-craft.webp",
-    imageAlt: "Warm luxury architectural materials representing The Zenith Suites Lekki",
+    image: "/images/works/zenith-suites.webp",
+    imageAlt: "The Zenith Suites Lekki twilight rooftop infinity pool",
+    gallery: [
+      { src: "/images/works/zenith-suites.webp", caption: "The Zenith Suites Lekki — Rooftop Pool & Skyline" },
+      { src: "/images/works/zenith-bedroom.webp", caption: "Luxury Black & Gold Master Suite" },
+    ],
     summary:
       "High-exclusivity hospitality experience for Lekki, Lagos featuring black-and-gold editorial framing, bespoke interior visuals, and automated WhatsApp booking capture.",
     challenge:
@@ -764,8 +802,12 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Visual & Craft",
     role: "Photographer & Visual Director",
     status: "Active Practice",
-    image: "/images/visual-lagos.webp",
-    imageAlt: "Silver-gelatin architectural light study representing Tempalette and Temoojii photography",
+    image: "/images/works/g3neralola.webp",
+    imageAlt: "Expressive Nigerian editorial portrait photography from G3NERALOLA & Tempalette",
+    gallery: [
+      { src: "/images/works/g3neralola.webp", caption: "G3NERALOLA — Expressive Visual Storytelling & Portrait" },
+      { src: "/images/visual-lagos.webp", caption: "Architectural Light & Shadow Monochrome Study" },
+    ],
     summary:
       "My personal visual practice spanning architectural photography, portraits, visual framing, and cinematography — training the eye for light, contrast, and composition that shapes every interface I build.",
     challenge:
@@ -794,8 +836,11 @@ export const PROJECTS: ProjectItem[] = [
     categoryLabel: "Visual & Craft",
     role: "Author & Developer",
     status: "Published Web Guide",
-    image: "/images/story-flow7.webp",
-    imageAlt: "Obsidian compass dial, linen journal, and amber glass prism representing Guide to Self-Discipline",
+    image: "/images/works/discipline-guide.webp",
+    imageAlt: "A Guide to Self-Discipline & Spirituality warm library reading vault visual",
+    gallery: [
+      { src: "/images/works/discipline-guide.webp", caption: "Digital Reading Vault — Self-Discipline & Spirituality" },
+    ],
     summary:
       "A calm, contemplative web publication examining personal discipline, intentional habits, and spiritual grounding — complementing the cognitive philosophy behind Flow 7 and NIT7ER Academy.",
     challenge:
