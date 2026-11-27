@@ -129,12 +129,7 @@ export default function Navbar({
           <Link
             href="/contact"
             id="nav-cta-contact"
-            className="btn btn-primary"
-            style={{
-              padding: "0.52rem 1rem",
-              fontSize: "0.78rem",
-              letterSpacing: "0.04em",
-            }}
+            className="btn btn-primary nav-cta-btn"
           >
             Work With Me
             <ArrowUpRightIcon size={14} />

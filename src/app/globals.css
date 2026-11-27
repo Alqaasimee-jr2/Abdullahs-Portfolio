@@ -3286,15 +3286,144 @@ a:hover .icon-arrow {
   }
 }
 
+.nav-cta-btn {
+  padding: 0.52rem 1rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+}
+
+/* Global element-level overflow & fluid media safeguards */
+main,
+section,
+article,
+aside,
+header,
+footer,
+div,
+figure,
+blockquote {
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+li,
+a,
+span,
+figcaption {
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .nav-cta-btn {
+    padding: 0.46rem 0.75rem;
+    font-size: 0.74rem;
+  }
+
+  .literary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .book-feature {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 1.25rem;
+    gap: 1.35rem;
+  }
+
+  .book-cover {
+    max-width: 190px;
+    margin-inline: auto;
+  }
+
+  .book-title {
+    font-size: clamp(1.65rem, 6.8vw, 2.2rem);
+  }
+
+  .venture-card,
+  .track-card,
+  .discipline-card,
+  .process-card,
+  .contact-form-card,
+  .referral-card,
+  .case-sidebar-card,
+  .home-cta-band {
+    padding: 1.35rem 1.15rem;
+  }
+
+  .venture-name {
+    font-size: clamp(1.75rem, 7vw, 2.3rem);
+  }
+
+  .about-lead {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.95rem, 7.5vw, 2.75rem);
+  }
+
+  .cmd-backdrop {
+    padding: 1rem 0.65rem;
+    align-items: flex-start;
+  }
+
+  .cmd-panel {
+    width: 100%;
+    border-radius: var(--radius-md);
+  }
+
+  .cmd-results {
+    max-height: 68vh;
+  }
+
+  .cmd-item {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .breadcrumb-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+  }
+
+  .point-top-row,
+  .point-bottom-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .carousel-bottom-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .carousel-dots {
+    justify-content: center;
+  }
+
+  .carousel-bottom-bar .btn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 480px) {
   :root {
     --gutter: 1rem;
-    --section-space: 3.75rem;
+    --section-space: 3.5rem;
   }
 
   .navbar-inner {
-    height: 4.15rem;
-    gap: 0.65rem;
+    height: 4rem;
+    gap: 0.45rem;
+  }
+
+  .brand-mark {
+    gap: 0.55rem;
+    min-width: 0;
   }
 
   .brand-clock {
@@ -3302,18 +3431,47 @@ a:hover .icon-arrow {
   }
 
   .brand-name {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .avatar-ring {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 2.15rem;
+    height: 2.15rem;
+    flex-shrink: 0;
+  }
+
+  .nav-actions {
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .nav-cta-btn {
+    display: none;
+  }
+
+  .theme-toggle,
+  .mobile-menu-btn {
+    width: 2.15rem;
+    height: 2.15rem;
+  }
+
+  .cmd-trigger-btn {
+    padding: 0.45rem 0.58rem;
+  }
+
+  .btn {
+    white-space: normal;
+    text-align: center;
+    padding: 0.78rem 1.15rem;
   }
 
   .hero-poster {
     min-height: auto;
-    padding-top: 1.15rem;
-    padding-bottom: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 2.25rem;
   }
 
   .hero-poster-top {
@@ -3323,37 +3481,37 @@ a:hover .icon-arrow {
   }
 
   .hero-poster-meta {
-    font-size: 0.62rem;
-    letter-spacing: 0.14em;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
   }
 
   .hero-poster-center {
-    padding-block: 1.75rem;
+    padding-block: 1.5rem;
   }
 
   .hero-poster-stage {
     min-height: auto;
-    gap: 1.65rem;
+    gap: 1.5rem;
   }
 
   .hero-poster-x {
-    width: min(76vw, 260px);
-    height: min(76vw, 260px);
+    width: min(74vw, 245px);
+    height: min(74vw, 245px);
   }
 
   .hero-poster-portrait {
-    width: min(58vw, 210px);
+    width: min(56vw, 200px);
     border-width: 4px;
   }
 
   .hero-poster-name {
-    font-size: 1.08rem;
-    letter-spacing: 0.14em;
+    font-size: 1.02rem;
+    letter-spacing: 0.12em;
   }
 
   .hero-poster-role {
-    font-size: 0.64rem;
-    letter-spacing: 0.13em;
+    font-size: 0.62rem;
+    letter-spacing: 0.11em;
   }
 
   .hero-poster-actions {
@@ -3365,8 +3523,26 @@ a:hover .icon-arrow {
     width: 100%;
   }
 
+  .hero-poster-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .hero-poster-scroll {
+    display: none;
+  }
+
+  .proof-cell {
+    padding: 1.15rem 1.15rem;
+  }
+
+  .proof-value {
+    font-size: 1.75rem;
+  }
+
   .carousel-card {
-    flex: 0 0 min(82vw, 295px);
+    flex: 0 0 min(84vw, 290px);
   }
 
   .carousel-top-bar {
@@ -3378,8 +3554,20 @@ a:hover .icon-arrow {
     justify-content: space-between;
   }
 
+  .story-card-head {
+    padding: 1.25rem 1rem 0.95rem;
+  }
+
+  .story-card-title {
+    font-size: 1.45rem;
+  }
+
+  .point-hero {
+    min-height: auto;
+  }
+
   .point-x-mask {
-    width: min(78vw, 260px);
+    width: min(76vw, 250px);
   }
 
   .point-portal-strip {
@@ -3402,22 +3590,35 @@ a:hover .icon-arrow {
 
   .archive-row,
   .archive-row-rich {
-    grid-template-columns: 3.2rem minmax(0, 1fr) auto;
-    padding: 1rem 0.35rem;
+    grid-template-columns: 3.1rem minmax(0, 1fr) auto;
+    padding: 0.95rem 0.25rem;
+    gap: 0.65rem;
   }
 
   .archive-num {
     display: none;
   }
 
+  .archive-title {
+    font-size: 0.96rem;
+  }
+
+  .archive-sub {
+    font-size: 0.76rem;
+  }
+
   .essay-row {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
-    padding: 1.35rem 0.35rem;
+    gap: 0.45rem;
+    padding: 1.25rem 0.25rem;
   }
 
   .essay-num {
     padding-top: 0;
+  }
+
+  .essay-title {
+    font-size: 1.35rem;
   }
 
   .essay-read {
@@ -3425,22 +3626,73 @@ a:hover .icon-arrow {
   }
 
   .poem-feature {
-    padding: 1.5rem 1.2rem;
+    padding: 1.35rem 1.05rem;
+    margin-bottom: 2.25rem;
   }
 
   .poem-lines {
-    font-size: 1.18rem;
+    font-size: 1.12rem;
+  }
+
+  .poem-caption {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+
+  .literary-card {
+    padding: 1.2rem;
+  }
+
+  .literary-title {
+    font-size: 1.35rem;
+  }
+
+  .page-hero {
+    padding-top: 2.25rem;
+    padding-bottom: 1.75rem;
   }
 
   .page-hero-title {
-    font-size: clamp(2.15rem, 9vw, 2.85rem);
+    font-size: clamp(2rem, 8.5vw, 2.65rem);
+  }
+
+  .about-ruliou-hero {
+    min-height: auto;
+  }
+
+  .about-ruliou-sky {
+    padding-top: 2.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .about-ruliou-horizon {
+    height: 210px;
   }
 
   .author-presence-strip {
     max-width: 100%;
     border-radius: var(--radius-md);
+    padding: 0.5rem 0.75rem 0.5rem 0.5rem;
+    gap: 0.65rem;
   }
 
+  .author-presence-avatar {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-shrink: 0;
+  }
+
+  .author-presence-name {
+    font-size: 0.82rem;
+  }
+
+  .author-presence-meta {
+    font-size: 0.62rem;
+    line-height: 1.35;
+  }
+
+  .referral-card #copy-referral-btn,
   .form-actions .btn,
   .visual-links .btn {
     width: 100%;
@@ -3449,6 +3701,11 @@ a:hover .icon-arrow {
   .footer-inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .footer-coords {
+    font-size: 0.68rem;
+    line-height: 1.5;
   }
 }
 
